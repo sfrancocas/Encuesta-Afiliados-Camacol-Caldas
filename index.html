@@ -50,6 +50,12 @@
             color: #1e3a8a; 
             font-weight: 600;
         }
+
+        /* Scrollbar personalizado para el texto legal */
+        .legal-scroll::-webkit-scrollbar { width: 6px; }
+        .legal-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .legal-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .legal-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-blue-50 min-h-screen flex items-center justify-center p-4 text-gray-800">
@@ -154,10 +160,8 @@
 
             <section id="bloque-1" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-helmet-safety mr-3"></i> Perfil: Constructor / Promotor</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos (Llene los que apliquen)</p>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial y Ventas">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-handshake text-blue-600 mr-1"></i> Comercial y Ventas</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -167,7 +171,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico / Proyectos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-compass-drafting text-blue-600 mr-1"></i> Técnico o Proyectos (Ing/Arq)</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -177,7 +180,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
                         </div>
                     </div>
-
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Jurídico / Urbanismo">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-scale-balanced text-blue-600 mr-1"></i> Jurídico o Urbanismo</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -188,7 +190,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés (Selección Múltiple)</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -222,7 +223,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="flex gap-4">
                     <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
                     <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
@@ -231,7 +231,6 @@
 
             <section id="bloque-2" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-industry mr-3"></i> Perfil: Industrial o Comerciante</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial B2B">
@@ -243,7 +242,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Innovación / Técnico">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-lightbulb text-blue-600 mr-1"></i> Innovación, Desarrollo o Técnico</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -254,7 +252,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -289,10 +286,8 @@
 
             <section id="bloque-3" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building-columns mr-3"></i> Perfil: Entidad Financiera o Fiduciaria</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Riesgos / Estudios Económicos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-chart-line text-blue-600 mr-1"></i> Riesgos o Estudios Económicos</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -302,7 +297,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Crédito Constructor">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-money-bill-transfer text-blue-600 mr-1"></i> Crédito Constructor o Comercial</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -313,7 +307,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -348,10 +341,8 @@
 
             <section id="bloque-4" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-bolt mr-3"></i> Perfil: Servicios Públicos</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Planeación e Infraestructura">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-map-location-dot text-blue-600 mr-1"></i> Planeación, Expansión e Infraestructura</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -361,7 +352,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Atención a Constructores">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-headset text-blue-600 mr-1"></i> Atención a Constructores</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -372,7 +362,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -407,10 +396,8 @@
 
             <section id="bloque-5" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-ruler-combined mr-3"></i> Perfil: Avaluador / Firma de Avalúos</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico Avalúos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-magnifying-glass-chart text-blue-600 mr-1"></i> Técnico Avalúos / Perito Principal</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -420,7 +407,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Estudios de Mercado">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-database text-blue-600 mr-1"></i> Estudios de Mercado / Datos</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -431,7 +417,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -466,10 +451,8 @@
 
             <section id="bloque-6" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-house-chimney-user mr-3"></i> Perfil: Caja de Compensación Familiar</h2>
-                
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Vivienda y Subsidios">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-hand-holding-dollar text-blue-600 mr-1"></i> Vivienda y Subsidios</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -479,7 +462,6 @@
                             <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
                         </div>
                     </div>
-                    
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Infraestructura / Obras">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-trowel-bricks text-blue-600 mr-1"></i> Infraestructura / Obras y Proyectos</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -490,7 +472,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -526,24 +507,37 @@
             <section id="bloque-final" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-file-signature mr-3"></i> Autorización Legal</h2>
                 
-                <div class="mb-10 p-6 bg-blue-50/50 border border-blue-200 rounded-xl text-sm text-gray-700 shadow-sm relative overflow-hidden">
+                <div class="mb-8 p-6 bg-blue-50/50 border border-blue-200 rounded-xl shadow-sm relative overflow-hidden">
                     <i class="fa-solid fa-shield-halved absolute -right-6 -top-6 text-9xl text-blue-100 opacity-50 pointer-events-none"></i>
                     
-                    <p class="font-bold text-lg mb-3 text-blue-900 relative z-10">Tratamiento de Datos Personales:</p>
-                    <p class="relative z-10 leading-relaxed text-base">¿Autoriza a Camacol Caldas el tratamiento de los datos personales de los contactos aquí registrados, según la ley de Habeas Data, para el envío de información gremial, comercial y educativa?</p>
-                    <div class="mt-6 flex flex-col sm:flex-row gap-4 relative z-10">
-                        <label class="interest-card cursor-pointer flex-1">
-                            <input type="radio" name="habeasData" value="Sí" class="hidden" required>
-                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white text-center">
-                                <span class="text-content text-gray-600 font-medium text-base"><i class="fa-solid fa-thumbs-up mr-2"></i> Sí, autorizo</span>
-                            </div>
-                        </label>
-                        <label class="interest-card cursor-pointer flex-1">
-                            <input type="radio" name="habeasData" value="No" class="hidden">
-                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white text-center">
-                                <span class="text-content text-gray-600 font-medium text-base"><i class="fa-solid fa-thumbs-down mr-2"></i> No autorizo</span>
-                            </div>
-                        </label>
+                    <h3 class="font-bold text-lg mb-4 text-blue-900 relative z-10 flex items-center"><i class="fa-solid fa-lock text-blue-600 mr-2 text-base"></i> Tratamiento de Datos Personales</h3>
+                    
+                    <div class="relative z-10 bg-white border border-gray-200 rounded-lg p-5 mb-6 text-xs text-gray-600 text-justify leading-relaxed shadow-inner max-h-48 overflow-y-auto legal-scroll">
+                        <p class="font-bold text-gray-800 mb-2 uppercase text-[11px] tracking-wider">Aviso de Privacidad y Tratamiento de Datos Personales</p>
+                        <p class="mb-2">
+                            Se le informa que, al diligenciar/suscribir este documento, usted autoriza a <strong class="text-gray-700">CAMACOL REGIONAL CALDAS</strong> (NIT 890.803.025-1 – Manizales) para tratar sus datos personales con las finalidades de la Política de Privacidad disponible en <a href="https://www.camacolcaldas.com" target="_blank" class="text-blue-600 hover:underline">www.camacolcaldas.com</a>, así como para el desarrollo de los procesos académicos; eventos o reuniones virtuales o presenciales, generación de reportes, informes y estadísticas para gestión interna y externa; promoción y difusión de programas educativos; prestación del servicio de manera directa, en conjunto y/o a través de instituciones que tengan una relación directa o indirecta con CAMACOL CALDAS, con las cuales se compartirá la información del asistente; gestión de comunicaciones por cualquier medio, consulta y reporte en Centrales de Riesgo, Listas restrictivas y demás operadores de información comercial, transmisión y transferencia de la información a terceros con que CAMACOL REGIONAL CALDAS tenga vinculo contractual o legal.
+                        </p>
+                        <p>
+                            Como titular tiene derecho al acceso, actualización, rectificación, supresión, revocar la autorización, radicar quejas ante la SIC. Las PQR podrá presentarlas al correo <a href="mailto:oficial.datos@camacolcaldas.com" class="text-blue-600 font-semibold hover:underline">oficial.datos@camacolcaldas.com</a>. Asimismo, deberá contar con la autorización de los terceros o dependientes de los cuales suministre información, para las finalidades antedichas y en consecuencia mantendré indemne al Responsable del Tratamiento, en caso de no cumplir con esta obligación.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 bg-blue-100/50 p-5 rounded-lg border border-blue-200">
+                        <p class="font-semibold text-blue-900 mb-4 text-center text-sm">¿Autoriza a Camacol Caldas el tratamiento de los datos personales de los contactos aquí registrados bajo las condiciones mencionadas?</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+                            <label class="interest-card cursor-pointer flex-1">
+                                <input type="radio" name="habeasData" value="Sí" class="hidden" required>
+                                <div class="border-2 border-gray-300 rounded-xl p-3 hover:border-blue-500 transition relative bg-white text-center shadow-sm">
+                                    <span class="text-content text-gray-600 font-bold text-sm"><i class="fa-solid fa-thumbs-up mr-2 text-green-600"></i> Sí, autorizo</span>
+                                </div>
+                            </label>
+                            <label class="interest-card cursor-pointer flex-1">
+                                <input type="radio" name="habeasData" value="No" class="hidden">
+                                <div class="border-2 border-gray-300 rounded-xl p-3 hover:border-blue-500 transition relative bg-white text-center shadow-sm">
+                                    <span class="text-content text-gray-600 font-bold text-sm"><i class="fa-solid fa-thumbs-down mr-2 text-red-500"></i> No autorizo</span>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
