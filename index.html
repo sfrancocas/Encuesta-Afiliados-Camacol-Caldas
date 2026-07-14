@@ -5,28 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfilación de Afiliados | Camacol Caldas</title>
     
-    <!-- Fuentes de Google: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Iconos: FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'] },
-                    colors: { camacol: '#0033a0' } // Azul corporativo opcional para acentos
+                    colors: { camacol: '#0033a0' }
                 }
             }
         }
     </script>
 
-    <!-- SweetAlert2 (Modales) y IMask (Máscaras de inputs) -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/imask"></script>
 
@@ -46,12 +42,12 @@
         
         /* Tarjetas de Checkbox personalizadas */
         .interest-card input:checked + div {
-            border-color: #1d4ed8; /* blue-700 */
-            background-color: #eff6ff; /* blue-50 */
+            border-color: #1d4ed8; 
+            background-color: #eff6ff; 
         }
         .interest-card input:checked + div .check-icon { display: block; }
         .interest-card input:checked + div .text-content {
-            color: #1e3a8a; /* blue-900 */
+            color: #1e3a8a; 
             font-weight: 600;
         }
     </style>
@@ -60,19 +56,15 @@
 
     <main class="bg-white rounded-xl shadow-2xl max-w-4xl w-full my-8 overflow-hidden relative">
         
-        <!-- CABECERA AZUL OSCURO -->
         <header class="bg-blue-900 p-8 pt-10 text-center flex flex-col items-center relative overflow-hidden">
-            <!-- Patrón de fondo sutil para dar textura (opcional) -->
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
             
-            <!-- AQUÍ VA TU LOGO BLANCO -->
             <img src="https://camacolcaldas.org/assets/logo-camacol-blanco-BYq1CuoC.png" alt="Logo Camacol Caldas" class="h-24 mb-4 object-contain relative z-10">
             
             <h1 class="text-3xl font-bold text-white mb-2 relative z-10 tracking-tight">Actualización de Afiliados</h1>
             <p class="text-blue-100 text-sm font-medium relative z-10">Construimos la mejor estrategia gremial con tu información actualizada.</p>
         </header>
 
-        <!-- INDICADOR DE PASOS -->
         <div class="bg-gray-50 border-b border-gray-200 px-8 py-4 flex justify-between items-center text-sm font-medium">
             <div id="indicador-1" class="flex items-center text-blue-700">
                 <span class="w-7 h-7 flex items-center justify-center bg-blue-700 text-white rounded-full mr-2">1</span> Datos Empresa
@@ -89,7 +81,6 @@
 
         <form id="encuestaCamacol" class="p-8">
             
-            <!-- BLOQUE 0: DATOS GENERALES -->
             <section id="bloque-0" class="block animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building mr-3"></i> Información Base</h2>
                 
@@ -111,7 +102,6 @@
                         </div>
                     </div>
 
-                    <!-- Contacto Alta Dirección -->
                     <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Alta Dirección">
                         <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-user-tie mr-2"></i> 1. Alta Dirección (Gerente / Presidente)</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -126,7 +116,6 @@
                         </div>
                     </div>
 
-                    <!-- Contacto RRHH -->
                     <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Gestión Humana">
                         <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-users mr-2"></i> 2. Gestión Humana o Capacitación</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -163,16 +152,12 @@
                 </button>
             </section>
 
-            <!-- ================= LOS BLOQUES ESPECÍFICOS ================= -->
-            
-            <!-- PLANTILLA DE CONTACTOS E INTERESES PARA BLOQUE 1 (CONSTRUCTOR) -->
             <section id="bloque-1" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-helmet-safety mr-3"></i> Perfil: Constructor / Promotor</h2>
                 
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos (Llene los que apliquen)</p>
                     
-                    <!-- Fila de contacto estandarizada -->
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial y Ventas">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-handshake text-blue-600 mr-1"></i> Comercial y Ventas</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -207,7 +192,6 @@
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés (Selección Múltiple)</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <!-- Tarjetas de Checkbox Interactivas -->
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Gerencia, Lean Construction y Estructuración">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -245,13 +229,11 @@
                 </div>
             </section>
 
-            <!-- BLOQUE 2: INDUSTRIAL -->
             <section id="bloque-2" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-industry mr-3"></i> Perfil: Industrial o Comerciante</h2>
                 
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
-                    <!-- Estructura replicada -->
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial B2B">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-store text-blue-600 mr-1"></i> Comercial B2B o Ventas</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -305,7 +287,6 @@
                 </div>
             </section>
 
-            <!-- BLOQUE 3: ENTIDAD FINANCIERA -->
             <section id="bloque-3" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building-columns mr-3"></i> Perfil: Entidad Financiera o Fiduciaria</h2>
                 
@@ -365,7 +346,6 @@
                 </div>
             </section>
 
-            <!-- BLOQUE 4: SERVICIOS PÚBLICOS -->
             <section id="bloque-4" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-bolt mr-3"></i> Perfil: Servicios Públicos</h2>
                 
@@ -425,7 +405,6 @@
                 </div>
             </section>
 
-            <!-- BLOQUE 5: AVALUADOR -->
             <section id="bloque-5" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-ruler-combined mr-3"></i> Perfil: Avaluador / Firma de Avalúos</h2>
                 
@@ -485,7 +464,6 @@
                 </div>
             </section>
 
-            <!-- BLOQUE 6: CAJA DE COMPENSACIÓN -->
             <section id="bloque-6" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-house-chimney-user mr-3"></i> Perfil: Caja de Compensación Familiar</h2>
                 
@@ -545,12 +523,10 @@
                 </div>
             </section>
 
-            <!-- BLOQUE FINAL: LEGAL -->
             <section id="bloque-final" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-file-signature mr-3"></i> Autorización Legal</h2>
                 
                 <div class="mb-10 p-6 bg-blue-50/50 border border-blue-200 rounded-xl text-sm text-gray-700 shadow-sm relative overflow-hidden">
-                    <!-- Icono gigante de fondo -->
                     <i class="fa-solid fa-shield-halved absolute -right-6 -top-6 text-9xl text-blue-100 opacity-50 pointer-events-none"></i>
                     
                     <p class="font-bold text-lg mb-3 text-blue-900 relative z-10">Tratamiento de Datos Personales:</p>
@@ -594,13 +570,44 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
         const tipoEmpresaSelect = document.getElementById('tipoEmpresa');
         let bloqueActivoId = '';
 
-        // --- MÁSCARAS DE INPUTS (IMask) ---
-        // Máscara para NIT (Números, puntos y guiones permitidos)
-        IMask(document.getElementById('nitEmpresa'), { mask: /^[0-9\-\.]+$/ });
-        // Máscara para todos los celulares (Formato: 300 000 0000)
-        document.querySelectorAll('.input-celular').forEach(input => {
-            IMask(input, { mask: '000 000 0000' });
-        });
+        // --- MÁSCARAS DE INPUTS (A prueba de errores) ---
+        if (typeof IMask !== 'undefined') {
+            IMask(document.getElementById('nitEmpresa'), { mask: /^[0-9\-\.]+$/ });
+            document.querySelectorAll('.input-celular').forEach(input => {
+                IMask(input, { mask: '000 000 0000' });
+            });
+        } else {
+            console.warn("IMask no cargó, pero el formulario seguirá funcionando.");
+        }
+
+        // --- AUTOGUARDADO (LOCAL STORAGE) ---
+        function saveDraft() {
+            const data = {};
+            form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
+                if(el.id) data[el.id] = el.value;
+                else data['el_' + Array.from(form.elements).indexOf(el)] = el.value;
+            });
+            form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => data['cb_' + i] = el.checked);
+            localStorage.setItem('camacol_draft', JSON.stringify(data));
+        }
+
+        function loadDraft() {
+            const draft = localStorage.getItem('camacol_draft');
+            if(draft) {
+                const data = JSON.parse(draft);
+                form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
+                    const key = el.id || 'el_' + Array.from(form.elements).indexOf(el);
+                    if(data[key]) {
+                        el.value = data[key];
+                        if(el.classList.contains('input-celular') && el.maskRef) el.maskRef.updateValue();
+                    }
+                });
+                form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => {
+                    if(data['cb_' + i]) el.checked = true;
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", loadDraft);
 
         // --- ADVERTENCIA CORREO GENÉRICO ---
         document.addEventListener('input', e => {
@@ -612,9 +619,11 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
                     else warningMsg.classList.add('hidden');
                 }
             }
-            saveDraft(); // Autoguardado al teclear
+            if (typeof saveDraft === 'function') saveDraft(); 
         });
-        document.addEventListener('change', saveDraft);
+        document.addEventListener('change', () => {
+            if (typeof saveDraft === 'function') saveDraft();
+        });
 
         // --- CONTROL DE INDICADOR DE PASOS ---
         function updateSteps(step) {
@@ -622,25 +631,27 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             const step2 = document.getElementById('indicador-2');
             const step3 = document.getElementById('indicador-3');
 
-            // Reset a inactivo
             [step1, step2, step3].forEach(el => {
                 el.className = 'flex items-center text-gray-400 transition-colors duration-300';
                 el.children[0].className = 'w-7 h-7 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full mr-2 transition-colors duration-300';
             });
 
-            // Activar actual
             const activeEl = step === 1 ? step1 : step === 2 ? step2 : step3;
             activeEl.className = 'flex items-center text-blue-700 transition-colors duration-300';
             activeEl.children[0].className = 'w-7 h-7 flex items-center justify-center bg-blue-700 text-white rounded-full mr-2 shadow-md transition-colors duration-300';
         }
 
-        // --- NAVEGACIÓN ---
+        // --- NAVEGACIÓN Y VALIDACIÓN (A prueba de errores) ---
         function validarCamposObligatorios(contenedor) {
             const requeridos = contenedor.querySelectorAll('[required]');
             for (let req of requeridos) {
                 if (!req.value.trim() && (req.type !== 'radio' && req.type !== 'checkbox')) {
-                    Swal.fire({ icon: 'warning', title: 'Atención', text: 'Por favor, completa todos los campos obligatorios antes de continuar.', confirmButtonColor: '#1d4ed8' });
-                    req.focus();
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({ icon: 'warning', title: 'Atención', text: 'Faltan campos obligatorios por llenar.', confirmButtonColor: '#1d4ed8' });
+                    } else {
+                        alert('Por favor, completa todos los campos obligatorios antes de continuar.');
+                    }
+                    req.focus(); 
                     return false;
                 }
             }
@@ -685,39 +696,6 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // --- AUTOGUARDADO (LOCAL STORAGE) ---
-        function saveDraft() {
-            const data = {};
-            // Guardar inputs y textareas
-            form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
-                if(el.id) data[el.id] = el.value;
-                // Si no tiene id (como los dinámicos), usamos un identificador basado en su posición
-                else data['el_' + Array.from(form.elements).indexOf(el)] = el.value;
-            });
-            // Guardar checkboxes
-            form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => data['cb_' + i] = el.checked);
-            localStorage.setItem('camacol_draft', JSON.stringify(data));
-        }
-
-        function loadDraft() {
-            const draft = localStorage.getItem('camacol_draft');
-            if(draft) {
-                const data = JSON.parse(draft);
-                form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
-                    const key = el.id || 'el_' + Array.from(form.elements).indexOf(el);
-                    if(data[key]) {
-                        el.value = data[key];
-                        // Re-aplicar máscara si es celular
-                        if(el.classList.contains('input-celular') && el.maskRef) el.maskRef.updateValue();
-                    }
-                });
-                form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => {
-                    if(data['cb_' + i]) el.checked = true;
-                });
-            }
-        }
-        document.addEventListener("DOMContentLoaded", loadDraft);
-
         // --- ENVÍO DE DATOS ---
         function extraerContactos(contenedor, arrayDestino) {
             contenedor.querySelectorAll('.contacto-grupo').forEach(grupo => {
@@ -735,16 +713,22 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             
             // Validar radio de Habeas Data
             if(!document.querySelector('input[name="habeasData"]:checked')) {
-                Swal.fire({ icon: 'warning', title: 'Autorización Requerida', text: 'Por favor, indique si autoriza el tratamiento de datos.', confirmButtonColor: '#1d4ed8' });
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({ icon: 'warning', title: 'Autorización Requerida', text: 'Por favor, indique si autoriza el tratamiento de datos.', confirmButtonColor: '#1d4ed8' });
+                } else {
+                    alert('Por favor, indique si autoriza el tratamiento de datos.');
+                }
                 return;
             }
 
-            Swal.fire({
-                title: 'Enviando información...',
-                text: 'Por favor no cierre esta ventana.',
-                allowOutsideClick: false,
-                didOpen: () => { Swal.showLoading() }
-            });
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    title: 'Enviando información...',
+                    text: 'Por favor no cierre esta ventana.',
+                    allowOutsideClick: false,
+                    didOpen: () => { Swal.showLoading() }
+                });
+            }
 
             let arrayContactos = [];
             extraerContactos(bloque0, arrayContactos);
@@ -765,6 +749,12 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
                 intereses: arrayIntereses
             };
 
+            const btnEnviar = document.getElementById('btnEnviar');
+            const textoOriginalBtn = btnEnviar.innerHTML;
+            btnEnviar.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Procesando...';
+            btnEnviar.disabled = true;
+            btnEnviar.classList.replace('bg-green-600', 'bg-gray-400');
+
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify(requestData),
@@ -774,24 +764,36 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             .then(datos => {
                 if(datos.status === 'success') {
                     localStorage.removeItem('camacol_draft'); // Limpiar borrador
-                    Swal.fire({
-                        icon: 'success',
-                        title: '¡Actualización Exitosa!',
-                        text: 'Gracias por ayudarnos a construir gremio. Su información ha sido guardada de forma segura.',
-                        confirmButtonColor: '#16a34a'
-                    }).then(() => location.reload());
+                    if (typeof Swal !== 'undefined') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Actualización Exitosa!',
+                            text: 'Gracias por ayudarnos a construir gremio. Su información ha sido guardada de forma segura.',
+                            confirmButtonColor: '#16a34a'
+                        }).then(() => location.reload());
+                    } else {
+                        alert('¡Actualización Exitosa! Gracias por ayudarnos a construir gremio.');
+                        location.reload();
+                    }
                 } else {
-                    throw new Error(datos.message);
+                    throw new Error(datos.message || 'Error en servidor');
                 }
             })
             .catch(error => {
                 console.error(error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Hubo un inconveniente',
-                    text: 'No pudimos guardar los datos. Verifique su conexión e intente nuevamente.',
-                    confirmButtonColor: '#d33'
-                });
+                if (typeof Swal !== 'undefined') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hubo un inconveniente',
+                        text: 'No pudimos guardar los datos. Verifique su conexión e intente nuevamente.',
+                        confirmButtonColor: '#d33'
+                    });
+                } else {
+                    alert('No pudimos guardar los datos. Verifique su conexión e intente nuevamente.');
+                }
+                btnEnviar.innerHTML = textoOriginalBtn;
+                btnEnviar.disabled = false;
+                btnEnviar.classList.replace('bg-gray-400', 'bg-green-600');
             });
         });
     </script>
