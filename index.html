@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfilación de Afiliados | Camacol Caldas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+
+    <main class="bg-white p-8 rounded-xl shadow-lg max-w-2xl w-full my-8">
+        
+        <header class="mb-8 text-center">
+            <h1 class="text-2xl font-bold text-blue-900">Actualización de Afiliados Camacol</h1>
+            <p class="text-gray-500 text-sm mt-2">Ayúdanos a enfocar nuestra gestión gremial y estrategia</p>
+        </header>
+
+        <form id="encuestaCamacol">
+            
+            <section id="bloque-0" class="block transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Datos Generales</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Nombre o Razón Social de la Empresa:</label>
+                        <input type="text" id="nombreEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-1">NIT:</label>
+                        <input type="text" id="nitEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Contacto de Alta Dirección (Gerente General / Presidente):</label>
+                        <p class="text-xs text-gray-500 mb-1">Nombre, Cargo, Correo, Celular</p>
+                        <textarea id="contactoDireccion" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" rows="2" required></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-1">Contacto de Gestión Humana / Capacitación:</label>
+                        <p class="text-xs text-gray-500 mb-1">Nombre, Cargo, Correo, Celular</p>
+                        <textarea id="contactoRRHH" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" rows="2" required></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <label class="block text-sm font-bold mb-2 text-blue-900">Tipo de Empresa (Seleccione para continuar):</label>
+                        <select id="tipoEmpresa" class="w-full border-2 border-blue-200 rounded px-3 py-3 font-semibold focus:outline-none focus:border-blue-600" required>
+                            <option value="">Seleccione su sector...</option>
+                            <option value="bloque-1">Constructor / Promotor</option>
+                            <option value="bloque-2">Industrial o Comerciante</option>
+                            <option value="bloque-3">Entidad Financiera o Fiduciaria</option>
+                            <option value="bloque-4">Empresa de Servicios Públicos</option>
+                            <option value="bloque-5">Avaluador / Firma de Avalúos</option>
+                            <option value="bloque-6">Caja de Compensación Familiar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="button" id="btnSiguiente" class="mt-6 w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition shadow-md">
+                    Siguiente Paso
+                </button>
+            </section>
+
+            <section id="bloque-1" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Constructor / Promotor</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial y de Ventas:</label><textarea data-label="Comercial" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico o de Proyectos (Ingeniería/Arquitectura):</label><textarea data-label="Técnico" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Jurídico o de Urbanismo:</label><textarea data-label="Jurídico" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Sostenibilidad / Gestión Ambiental:</label><textarea data-label="Sostenibilidad" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia, Lean Construction y Estructuración de Proyectos" class="mt-1 mr-2"> Gerencia, Lean Construction y Estructuración de Proyectos</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, POT y Licencias" class="mt-1 mr-2"> Derecho Urbano, POT y Licencias</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Modelado y Gestión BIM / Transformación Digital" class="mt-1 mr-2"> Modelado y Gestión BIM / Transformación Digital</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Construcción Sostenible y Certificación EDGE" class="mt-1 mr-2"> Construcción Sostenible y Certificación EDGE</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-2" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Industrial o Comerciante</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial B2B o de Ventas:</label><textarea data-label="Comercial B2B" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Innovación, Desarrollo o Técnico:</label><textarea data-label="Innovación" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Compras o Abastecimiento:</label><textarea data-label="Compras" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Ventas Técnicas B2B y Mercadeo Sectorial" class="mt-1 mr-2"> Ventas Técnicas B2B y Mercadeo Sectorial</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Actualización de Normas Técnicas y de Materiales" class="mt-1 mr-2"> Actualización de Normas Técnicas y de Materiales</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Sostenibilidad y Economía Circular en Insumos" class="mt-1 mr-2"> Sostenibilidad y Economía Circular en Insumos</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-3" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Entidad Financiera o Fiduciaria</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Riesgos o Estudios Económicos:</label><textarea data-label="Riesgos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Crédito Constructor o Gerencia Comercial:</label><textarea data-label="Crédito/Comercial" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Negocios Fiduciarios / Legal:</label><textarea data-label="Fiduciarios/Legal" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Estructuración y Valoración de Proyectos Inmobiliarios" class="mt-1 mr-2"> Estructuración y Valoración de Proyectos Inmobiliarios</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Análisis de Riesgo Sectorial y Macroeconomía" class="mt-1 mr-2"> Análisis de Riesgo Sectorial y Macroeconomía</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Financiero, Fiducias y Régimen Urbano" class="mt-1 mr-2"> Derecho Financiero, Fiducias y Régimen Urbano</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-4" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Empresa de Servicios Públicos</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Planeación, Expansión e Infraestructura:</label><textarea data-label="Planeación" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial o de Atención a Constructores / Urbanizadores:</label><textarea data-label="Atención Constructores" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico o de Ingeniería:</label><textarea data-label="Ingeniería" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Planificación Territorial, Ciudad y POT" class="mt-1 mr-2"> Planificación Territorial, Ciudad y POT</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Regulación y Normativa de Servicios Públicos (RETIE, Hidrosanitarios)" class="mt-1 mr-2"> Regulación y Normativa de Servicios Públicos (RETIE, Hidrosanitarios)</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia de Proyectos de Infraestructura y Obra Civil" class="mt-1 mr-2"> Gerencia de Proyectos de Infraestructura y Obra Civil</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-5" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Avaluador / Firma de Avalúos</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico de Avalúos / Perito Principal:</label><textarea data-label="Avalúos Técnicos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Estudios de Mercado o Análisis de Datos:</label><textarea data-label="Estudios Mercado" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Avalúos Complejos, Especiales y NIIF" class="mt-1 mr-2"> Avalúos Complejos, Especiales y NIIF</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal" class="mt-1 mr-2"> Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Analítica de Datos e Inteligencia de Mercados Inmobiliarios" class="mt-1 mr-2"> Analítica de Datos e Inteligencia de Mercados Inmobiliarios</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-6" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Caja de Compensación Familiar</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Vivienda y Subsidios:</label><textarea data-label="Vivienda/Subsidios" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                    <div><label class="block text-sm font-semibold mb-1">Contacto de Infraestructura / Obras y Proyectos:</label><textarea data-label="Obras/Proyectos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Estructuración de Proyectos de Vivienda de Interés Social (VIS/VIP)" class="mt-1 mr-2"> Estructuración de Proyectos de Vivienda de Interés Social (VIS/VIP)</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia de Proyectos de Infraestructura Social e Institucional" class="mt-1 mr-2"> Gerencia de Proyectos de Infraestructura Social e Institucional</label>
+                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes" class="mt-1 mr-2"> Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes</label>
+                </div>
+
+                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+            </section>
+
+            <section id="bloque-final" class="hidden transition-all duration-300">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Autorización Legal</h2>
+                
+                <div class="mb-6 p-4 bg-blue-50 border border-blue-100 rounded text-sm">
+                    <p class="font-semibold mb-2">Tratamiento de Datos Personales:</p>
+                    <p>¿Autoriza a Camacol Caldas el tratamiento de sus datos personales según la ley de Habeas Data para el envío de información gremial, comercial y educativa?</p>
+                    <div class="mt-4 flex gap-6">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="habeasData" value="Sí" class="mr-2 w-4 h-4 text-blue-600" required> Sí, autorizo.
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="habeasData" value="No" class="mr-2 w-4 h-4 text-blue-600"> No autorizo.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="btnEnviar" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded hover:bg-green-700 transition shadow-md">
+                    Enviar Encuesta
+                </button>
+            </section>
+
+        </form>
+    </main>
+
+    <script>
+        // URL de tu Google Apps Script
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqa7nCXHnd8wNbbL-A200f9SRjnNQi_rbGfkvSlFTB7-ikr5CET8LZtbsgRBMnkZJRag/exec';
+
+        const form = document.getElementById('encuestaCamacol');
+        const bloque0 = document.getElementById('bloque-0');
+        const bloqueFinal = document.getElementById('bloque-final');
+        const tipoEmpresaSelect = document.getElementById('tipoEmpresa');
+        let bloqueActivoId = '';
+
+        // Avanzar del Bloque 0 al Bloque Específico
+        document.getElementById('btnSiguiente').addEventListener('click', () => {
+            const nombre = document.getElementById('nombreEmpresa').value.trim();
+            const nit = document.getElementById('nitEmpresa').value.trim();
+            const seleccion = tipoEmpresaSelect.value;
+            const contactoDir = document.getElementById('contactoDireccion').value.trim();
+            const contactoRRHH = document.getElementById('contactoRRHH').value.trim();
+
+            if (!nombre || !nit || !seleccion || !contactoDir || !contactoRRHH) {
+                alert('Por favor, completa todos los campos de esta sección para continuar.');
+                return;
+            }
+
+            bloque0.classList.add('hidden');
+            bloqueActivoId = seleccion; 
+            document.getElementById(bloqueActivoId).classList.remove('hidden');
+        });
+
+        // Avanzar al Bloque Legal
+        document.querySelectorAll('.btn-continuar-legal').forEach(boton => {
+            boton.addEventListener('click', (evento) => {
+                evento.target.closest('section').classList.add('hidden');
+                bloqueFinal.classList.remove('hidden');
+            });
+        });
+
+        // Enviar Formulario
+        form.addEventListener('submit', (evento) => {
+            evento.preventDefault(); 
+            
+            const btnEnviar = document.getElementById('btnEnviar');
+            const textoOriginalBtn = btnEnviar.innerText;
+            btnEnviar.innerText = 'Enviando datos...';
+            btnEnviar.disabled = true;
+            btnEnviar.classList.replace('bg-green-600', 'bg-gray-400');
+
+            // Extraer datos dinámicamente del bloque activo
+            const bloqueActivo = document.getElementById(bloqueActivoId);
+            
+            // 1. Extraer contactos específicos (iterando sobre textareas)
+            let contactosEspecificos = [];
+            bloqueActivo.querySelectorAll('textarea').forEach(ta => {
+                if (ta.value.trim() !== '') {
+                    contactosEspecificos.push(`[${ta.getAttribute('data-label')}] ${ta.value.trim()}`);
+                }
+            });
+
+            // 2. Extraer intereses (iterando sobre checkboxes marcados)
+            let intereses = [];
+            bloqueActivo.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                intereses.push(cb.value);
+            });
+
+            // Construir el objeto JSON para Google Apps Script
+            const requestData = {
+                nombreEmpresa: document.getElementById('nombreEmpresa').value,
+                nit: document.getElementById('nitEmpresa').value,
+                tipoEmpresa: tipoEmpresaSelect.options[tipoEmpresaSelect.selectedIndex].text,
+                contactosGenerales: `Alta Dirección: ${document.getElementById('contactoDireccion').value} | RRHH: ${document.getElementById('contactoRRHH').value}`,
+                contactosEspecificos: contactosEspecificos.length > 0 ? contactosEspecificos.join(' || ') : 'Ninguno registrado',
+                interesesCapacitacion: intereses.length > 0 ? intereses.join(' | ') : 'Ninguno seleccionado',
+                autorizacionLegal: document.querySelector('input[name="habeasData"]:checked').value
+            };
+
+            // Ejecutar la petición POST
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(requestData),
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                }
+            })
+            .then(respuesta => respuesta.json())
+            .then(datos => {
+                if(datos.status === 'success') {
+                    alert('¡Gracias! La información de su empresa ha sido actualizada correctamente en Camacol Caldas.');
+                    form.reset(); 
+                    location.reload(); 
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+            })
+            .catch(error => {
+                alert('Hubo un inconveniente al enviar la información. Por favor, intente de nuevo o verifique su conexión.');
+                console.error(error);
+                btnEnviar.innerText = textoOriginalBtn;
+                btnEnviar.disabled = false;
+                btnEnviar.classList.replace('bg-gray-400', 'bg-green-600');
+            });
+        });
+    </script>
+</body>
+</html>
