@@ -16,21 +16,19 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+<body class="bg-blue-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
 
-    <main class="bg-white p-8 rounded-xl shadow-xl max-w-3xl w-full my-8">
+    <main class="bg-white rounded-xl shadow-xl max-w-3xl w-full my-8 overflow-hidden">
         
-        <header class="mb-8 text-center flex flex-col items-center">
-            <!-- AQUÍ VA EL LOGO: Reemplaza el src con la URL real de la imagen -->
-            <img src="https://camacolcaldas.org/assets/logo-camacol-blanco-BYq1CuoC.png" class="h-24 mb-4 object-contain">
+        <header class="bg-blue-900 p-8 pt-10 text-center flex flex-col items-center">
+            <img src="URL_DE_TU_LOGO_BLANCO_AQUI" alt="Logo Camacol Caldas" class="h-24 mb-4 object-contain">
             
-            <h1 class="text-3xl font-bold text-blue-900 mb-2">Actualización de Afiliados</h1>
-            <p class="text-gray-600 text-sm">Ayúdanos a enfocar nuestra gestión gremial y estrategia con la información correcta.</p>
+            <h1 class="text-3xl font-bold text-white mb-2">Actualización de Afiliados</h1>
+            <p class="text-blue-100 text-sm font-medium">Ayúdanos a enfocar nuestra gestión gremial y estrategia con la información correcta.</p>
         </header>
 
-        <form id="encuestaCamacol">
+        <form id="encuestaCamacol" class="p-8">
             
-            <!-- BLOQUE 0: DATOS GENERALES -->
             <section id="bloque-0" class="block transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Datos Generales de la Empresa</h2>
                 
@@ -46,7 +44,6 @@
                         </div>
                     </div>
 
-                    <!-- Contacto Alta Dirección -->
                     <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Alta Dirección">
                         <label class="block text-sm font-bold text-blue-900 mb-3">1. Contacto de Alta Dirección (Gerente / Presidente)</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -57,7 +54,6 @@
                         </div>
                     </div>
 
-                    <!-- Contacto RRHH -->
                     <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Gestión Humana">
                         <label class="block text-sm font-bold text-blue-900 mb-3">2. Contacto de Gestión Humana o Capacitación</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -87,7 +83,6 @@
                 </button>
             </section>
 
-            <!-- BLOQUE 1: CONSTRUCTOR -->
             <section id="bloque-1" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Constructor / Promotor</h2>
                 
@@ -136,7 +131,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE 2: INDUSTRIAL / COMERCIANTE -->
             <section id="bloque-2" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Industrial o Comerciante</h2>
                 
@@ -177,7 +171,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE 3: ENTIDAD FINANCIERA -->
             <section id="bloque-3" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Entidad Financiera o Fiduciaria</h2>
                 
@@ -218,7 +211,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE 4: SERVICIOS PÚBLICOS -->
             <section id="bloque-4" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Empresa de Servicios Públicos</h2>
                 
@@ -259,7 +251,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE 5: AVALUADOR -->
             <section id="bloque-5" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Avaluador / Firma de Avalúos</h2>
                 
@@ -293,7 +284,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE 6: CAJA DE COMPENSACIÓN -->
             <section id="bloque-6" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Caja de Compensación Familiar</h2>
                 
@@ -327,7 +317,6 @@
                 <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
-            <!-- BLOQUE FINAL: LEGAL -->
             <section id="bloque-final" class="hidden transition-all duration-300">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Autorización Legal</h2>
                 
@@ -359,9 +348,7 @@
 
     <script>
         // ¡REEMPLAZA ESTA URL POR LA NUEVA QUE TE DÉ GOOGLE APPS SCRIPT AL IMPLEMENTAR!
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyOxNsk8-mxqXezn_Z3b7dCdZnAqdtHEQU2RfAxuQf9dJEsipkxhh_9tNonxcu6Fj-y7g/exec
-
-AKfycbyOxNsk8-mxqXezn_Z3b7dCdZnAqdtHEQU2RfAxuQf9dJEsipkxhh_9tNonxcu6Fj-y7g';
+        const SCRIPT_URL = 'TUA_NUEVA_URL_DE_APPS_SCRIPT_AQUI';
 
         const form = document.getElementById('encuestaCamacol');
         const bloque0 = document.getElementById('bloque-0');
