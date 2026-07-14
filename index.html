@@ -5,47 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfilación de Afiliados | Camacol Caldas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Pequeño ajuste para transiciones suaves */
+        .hidden { display: none !important; }
+    </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
 
-    <main class="bg-white p-8 rounded-xl shadow-lg max-w-2xl w-full my-8">
+    <main class="bg-white p-8 rounded-xl shadow-xl max-w-3xl w-full my-8">
         
         <header class="mb-8 text-center">
-            <h1 class="text-2xl font-bold text-blue-900">Actualización de Afiliados Camacol</h1>
-            <p class="text-gray-500 text-sm mt-2">Ayúdanos a enfocar nuestra gestión gremial y estrategia</p>
+            <h1 class="text-3xl font-bold text-blue-900 mb-2">Actualización de Afiliados Camacol</h1>
+            <p class="text-gray-600 text-sm">Ayúdanos a enfocar nuestra gestión gremial y estrategia con la información correcta.</p>
         </header>
 
         <form id="encuestaCamacol">
             
+            <!-- BLOQUE 0: DATOS GENERALES -->
             <section id="bloque-0" class="block transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Datos Generales</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Datos Generales de la Empresa</h2>
                 
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Nombre o Razón Social de la Empresa:</label>
-                        <input type="text" id="nombreEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold mb-1">Nombre o Razón Social:</label>
+                            <input type="text" id="nombreEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-1">NIT:</label>
+                            <input type="text" id="nitEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold mb-1">NIT:</label>
-                        <input type="text" id="nitEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+                    <!-- Contacto Alta Dirección -->
+                    <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Alta Dirección">
+                        <label class="block text-sm font-bold text-blue-900 mb-3">1. Contacto de Alta Dirección (Gerente / Presidente)</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <input type="text" placeholder="Nombre completo" class="input-nombre w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="email" placeholder="Correo electrónico" class="input-correo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Contacto de Alta Dirección (Gerente General / Presidente):</label>
-                        <p class="text-xs text-gray-500 mb-1">Nombre, Cargo, Correo, Celular</p>
-                        <textarea id="contactoDireccion" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" rows="2" required></textarea>
+                    <!-- Contacto RRHH -->
+                    <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Gestión Humana">
+                        <label class="block text-sm font-bold text-blue-900 mb-3">2. Contacto de Gestión Humana o Capacitación</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <input type="text" placeholder="Nombre completo" class="input-nombre w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="email" placeholder="Correo electrónico" class="input-correo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-bold mb-1">Contacto de Gestión Humana / Capacitación:</label>
-                        <p class="text-xs text-gray-500 mb-1">Nombre, Cargo, Correo, Celular</p>
-                        <textarea id="contactoRRHH" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" rows="2" required></textarea>
-                    </div>
-
-                    <div class="pt-4">
-                        <label class="block text-sm font-bold mb-2 text-blue-900">Tipo de Empresa (Seleccione para continuar):</label>
-                        <select id="tipoEmpresa" class="w-full border-2 border-blue-200 rounded px-3 py-3 font-semibold focus:outline-none focus:border-blue-600" required>
+                    <div class="pt-4 border-t">
+                        <label class="block text-sm font-bold mb-2 text-gray-800">Tipo de Empresa (Seleccione para continuar):</label>
+                        <select id="tipoEmpresa" class="w-full border-2 border-blue-200 rounded px-3 py-3 font-semibold focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white" required>
                             <option value="">Seleccione su sector...</option>
                             <option value="bloque-1">Constructor / Promotor</option>
                             <option value="bloque-2">Industrial o Comerciante</option>
@@ -57,158 +73,284 @@
                     </div>
                 </div>
 
-                <button type="button" id="btnSiguiente" class="mt-6 w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition shadow-md">
+                <button type="button" id="btnSiguiente" class="mt-8 w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">
                     Siguiente Paso
                 </button>
             </section>
 
+            <!-- BLOQUE 1: CONSTRUCTOR -->
             <section id="bloque-1" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Constructor / Promotor</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Constructor / Promotor</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial y de Ventas:</label><textarea data-label="Comercial" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico o de Proyectos (Ingeniería/Arquitectura):</label><textarea data-label="Técnico" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Jurídico o de Urbanismo:</label><textarea data-label="Jurídico" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Sostenibilidad / Gestión Ambiental:</label><textarea data-label="Sostenibilidad" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Comercial y Ventas">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial y Ventas</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico / Proyectos">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico o Proyectos (Ing/Arq)</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Jurídico / Urbanismo">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Jurídico o Urbanismo</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Sostenibilidad">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Sostenibilidad / Gestión Ambiental</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia, Lean Construction y Estructuración de Proyectos" class="mt-1 mr-2"> Gerencia, Lean Construction y Estructuración de Proyectos</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, POT y Licencias" class="mt-1 mr-2"> Derecho Urbano, POT y Licencias</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Modelado y Gestión BIM / Transformación Digital" class="mt-1 mr-2"> Modelado y Gestión BIM / Transformación Digital</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Construcción Sostenible y Certificación EDGE" class="mt-1 mr-2"> Construcción Sostenible y Certificación EDGE</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Gerencia, Lean Construction y Estructuración" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia, Lean Construction y Estructuración de Proyectos</label>
+                        <label class="flex items-start"><input type="checkbox" value="Derecho Urbano, POT y Licencias" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, POT y Licencias</label>
+                        <label class="flex items-start"><input type="checkbox" value="Modelado y Gestión BIM" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Modelado y Gestión BIM / Transformación Digital</label>
+                        <label class="flex items-start"><input type="checkbox" value="Construcción Sostenible EDGE" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Construcción Sostenible y Certificación EDGE</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE 2: INDUSTRIAL / COMERCIANTE -->
             <section id="bloque-2" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Industrial o Comerciante</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Industrial o Comerciante</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial B2B o de Ventas:</label><textarea data-label="Comercial B2B" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Innovación, Desarrollo o Técnico:</label><textarea data-label="Innovación" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Compras o Abastecimiento:</label><textarea data-label="Compras" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Comercial B2B">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial B2B o Ventas</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Innovación / Técnico">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Innovación, Desarrollo o Técnico</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Compras / Abastecimiento">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Compras o Abastecimiento</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Ventas Técnicas B2B y Mercadeo Sectorial" class="mt-1 mr-2"> Ventas Técnicas B2B y Mercadeo Sectorial</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Actualización de Normas Técnicas y de Materiales" class="mt-1 mr-2"> Actualización de Normas Técnicas y de Materiales</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Sostenibilidad y Economía Circular en Insumos" class="mt-1 mr-2"> Sostenibilidad y Economía Circular en Insumos</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Ventas Técnicas B2B y Mercadeo" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Ventas Técnicas B2B y Mercadeo Sectorial</label>
+                        <label class="flex items-start"><input type="checkbox" value="Actualización de Normas Técnicas" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Actualización de Normas Técnicas y de Materiales</label>
+                        <label class="flex items-start"><input type="checkbox" value="Sostenibilidad y Economía Circular" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Sostenibilidad y Economía Circular en Insumos</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE 3: ENTIDAD FINANCIERA -->
             <section id="bloque-3" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Entidad Financiera o Fiduciaria</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Entidad Financiera o Fiduciaria</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Riesgos o Estudios Económicos:</label><textarea data-label="Riesgos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Crédito Constructor o Gerencia Comercial:</label><textarea data-label="Crédito/Comercial" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Negocios Fiduciarios / Legal:</label><textarea data-label="Fiduciarios/Legal" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Riesgos / Estudios Económicos">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Riesgos o Estudios Económicos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Crédito Constructor">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Crédito Constructor o Comercial</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Negocios Fiduciarios">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Negocios Fiduciarios / Legal</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Estructuración y Valoración de Proyectos Inmobiliarios" class="mt-1 mr-2"> Estructuración y Valoración de Proyectos Inmobiliarios</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Análisis de Riesgo Sectorial y Macroeconomía" class="mt-1 mr-2"> Análisis de Riesgo Sectorial y Macroeconomía</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Financiero, Fiducias y Régimen Urbano" class="mt-1 mr-2"> Derecho Financiero, Fiducias y Régimen Urbano</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Estructuración Inmobiliaria" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Estructuración y Valoración de Proyectos Inmobiliarios</label>
+                        <label class="flex items-start"><input type="checkbox" value="Análisis de Riesgo y Macroeconomía" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Análisis de Riesgo Sectorial y Macroeconomía</label>
+                        <label class="flex items-start"><input type="checkbox" value="Derecho Financiero y Fiducias" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Financiero, Fiducias y Régimen Urbano</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE 4: SERVICIOS PÚBLICOS -->
             <section id="bloque-4" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Empresa de Servicios Públicos</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Empresa de Servicios Públicos</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Planeación, Expansión e Infraestructura:</label><textarea data-label="Planeación" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Comercial o de Atención a Constructores / Urbanizadores:</label><textarea data-label="Atención Constructores" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico o de Ingeniería:</label><textarea data-label="Ingeniería" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Planeación e Infraestructura">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Planeación, Expansión e Infraestructura</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Atención a Constructores">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial o Atención a Constructores</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico / Ingeniería">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico o Ingeniería</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Planificación Territorial, Ciudad y POT" class="mt-1 mr-2"> Planificación Territorial, Ciudad y POT</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Regulación y Normativa de Servicios Públicos (RETIE, Hidrosanitarios)" class="mt-1 mr-2"> Regulación y Normativa de Servicios Públicos (RETIE, Hidrosanitarios)</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia de Proyectos de Infraestructura y Obra Civil" class="mt-1 mr-2"> Gerencia de Proyectos de Infraestructura y Obra Civil</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Planificación Territorial y POT" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Planificación Territorial, Ciudad y POT</label>
+                        <label class="flex items-start"><input type="checkbox" value="Regulación Servicios Públicos" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Regulación y Normativa (RETIE, Hidrosanitarios)</label>
+                        <label class="flex items-start"><input type="checkbox" value="Gerencia Proyectos Infraestructura" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia de Proyectos de Infraestructura y Obra Civil</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE 5: AVALUADOR -->
             <section id="bloque-5" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Avaluador / Firma de Avalúos</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Avaluador / Firma de Avalúos</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto Técnico de Avalúos / Perito Principal:</label><textarea data-label="Avalúos Técnicos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Estudios de Mercado o Análisis de Datos:</label><textarea data-label="Estudios Mercado" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico Avalúos">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico de Avalúos / Perito Principal</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Estudios de Mercado">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Estudios de Mercado o Análisis de Datos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Avalúos Complejos, Especiales y NIIF" class="mt-1 mr-2"> Avalúos Complejos, Especiales y NIIF</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal" class="mt-1 mr-2"> Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Analítica de Datos e Inteligencia de Mercados Inmobiliarios" class="mt-1 mr-2"> Analítica de Datos e Inteligencia de Mercados Inmobiliarios</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Avalúos Complejos y NIIF" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Avalúos Complejos, Especiales y NIIF</label>
+                        <label class="flex items-start"><input type="checkbox" value="Catastro y Propiedad Horizontal" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal</label>
+                        <label class="flex items-start"><input type="checkbox" value="Analítica de Datos Inmobiliarios" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Analítica de Datos e Inteligencia de Mercados</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE 6: CAJA DE COMPENSACIÓN -->
             <section id="bloque-6" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Área: Caja de Compensación Familiar</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Caja de Compensación Familiar</h2>
                 
-                <div class="space-y-4 mb-6">
-                    <p class="text-sm font-bold text-blue-800">1. Contactos Estratégicos (Nombre, Cargo, Correo, Celular)</p>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Vivienda y Subsidios:</label><textarea data-label="Vivienda/Subsidios" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
-                    <div><label class="block text-sm font-semibold mb-1">Contacto de Infraestructura / Obras y Proyectos:</label><textarea data-label="Obras/Proyectos" class="w-full border rounded px-3 py-2" rows="2"></textarea></div>
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Vivienda y Subsidios">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Vivienda y Subsidios</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Infraestructura / Obras">
+                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Infraestructura / Obras y Proyectos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-6">
-                    <p class="text-sm font-bold text-blue-800 mb-2">2. Interés de Capacitación (Selección múltiple)</p>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Estructuración de Proyectos de Vivienda de Interés Social (VIS/VIP)" class="mt-1 mr-2"> Estructuración de Proyectos de Vivienda de Interés Social (VIS/VIP)</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Gerencia de Proyectos de Infraestructura Social e Institucional" class="mt-1 mr-2"> Gerencia de Proyectos de Infraestructura Social e Institucional</label>
-                    <label class="flex items-start mb-2"><input type="checkbox" value="Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes" class="mt-1 mr-2"> Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes</label>
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
+                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
+                        <label class="flex items-start"><input type="checkbox" value="Estructuración VIS/VIP" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Estructuración de Proyectos de Vivienda (VIS/VIP)</label>
+                        <label class="flex items-start"><input type="checkbox" value="Gerencia Infraestructura Social" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia de Proyectos de Infraestructura Social</label>
+                        <label class="flex items-start"><input type="checkbox" value="Subsidios Concurrentes y Gestión Suelo" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes</label>
+                    </div>
                 </div>
 
-                <button type="button" class="btn-continuar-legal w-full bg-blue-600 text-white font-bold py-3 px-4 rounded hover:bg-blue-700 transition">Continuar a Términos Legales</button>
+                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
             </section>
 
+            <!-- BLOQUE FINAL: LEGAL -->
             <section id="bloque-final" class="hidden transition-all duration-300">
-                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Autorización Legal</h2>
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Autorización Legal</h2>
                 
-                <div class="mb-6 p-4 bg-blue-50 border border-blue-100 rounded text-sm">
-                    <p class="font-semibold mb-2">Tratamiento de Datos Personales:</p>
-                    <p>¿Autoriza a Camacol Caldas el tratamiento de sus datos personales según la ley de Habeas Data para el envío de información gremial, comercial y educativa?</p>
-                    <div class="mt-4 flex gap-6">
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="habeasData" value="Sí" class="mr-2 w-4 h-4 text-blue-600" required> Sí, autorizo.
+                <div class="mb-8 p-5 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-700">
+                    <p class="font-bold text-base mb-2 text-blue-900">Tratamiento de Datos Personales:</p>
+                    <p>¿Autoriza a Camacol Caldas el tratamiento de los datos personales de los contactos aquí registrados, según la ley de Habeas Data, para el envío de información gremial, comercial y educativa?</p>
+                    <div class="mt-4 flex gap-8">
+                        <label class="flex items-center cursor-pointer font-semibold">
+                            <input type="radio" name="habeasData" value="Sí" class="mr-2 w-5 h-5 text-blue-600" required> Sí, autorizo.
                         </label>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="habeasData" value="No" class="mr-2 w-4 h-4 text-blue-600"> No autorizo.
+                        <label class="flex items-center cursor-pointer font-semibold">
+                            <input type="radio" name="habeasData" value="No" class="mr-2 w-5 h-5 text-blue-600"> No autorizo.
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" id="btnEnviar" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded hover:bg-green-700 transition shadow-md">
-                    Enviar Encuesta
-                </button>
+                <div class="flex gap-4">
+                    <button type="button" onclick="location.reload()" class="w-1/3 bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition">
+                        Volver al inicio
+                    </button>
+                    <button type="submit" id="btnEnviar" class="w-2/3 bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition shadow-md">
+                        Enviar Datos a Camacol
+                    </button>
+                </div>
             </section>
 
         </form>
     </main>
 
     <script>
-        // URL de tu Google Apps Script
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqa7nCXHnd8wNbbL-A200f9SRjnNQi_rbGfkvSlFTB7-ikr5CET8LZtbsgRBMnkZJRag/exec';
+        // ¡REEMPLAZA ESTA URL POR LA NUEVA QUE TE DÉ GOOGLE APPS SCRIPT AL IMPLEMENTAR!
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzf2Tggh4nPBCZbNQFnLWULn7O3cvPWGKe5vgfVaDK3JXOqwT2xtjOT72omb3Ycppn6Rg/exec';
 
         const form = document.getElementById('encuestaCamacol');
         const bloque0 = document.getElementById('bloque-0');
@@ -216,22 +358,28 @@
         const tipoEmpresaSelect = document.getElementById('tipoEmpresa');
         let bloqueActivoId = '';
 
-        // Avanzar del Bloque 0 al Bloque Específico
-        document.getElementById('btnSiguiente').addEventListener('click', () => {
-            const nombre = document.getElementById('nombreEmpresa').value.trim();
-            const nit = document.getElementById('nitEmpresa').value.trim();
-            const seleccion = tipoEmpresaSelect.value;
-            const contactoDir = document.getElementById('contactoDireccion').value.trim();
-            const contactoRRHH = document.getElementById('contactoRRHH').value.trim();
+        // Función para validar campos obligatorios dentro de un contenedor
+        function validarCamposObligatorios(contenedor) {
+            const requeridos = contenedor.querySelectorAll('[required]');
+            for (let req of requeridos) {
+                if (!req.value.trim()) {
+                    req.focus();
+                    return false;
+                }
+            }
+            return true;
+        }
 
-            if (!nombre || !nit || !seleccion || !contactoDir || !contactoRRHH) {
-                alert('Por favor, completa todos los campos de esta sección para continuar.');
+        // Avanzar del Bloque 0 al Específico
+        document.getElementById('btnSiguiente').addEventListener('click', () => {
+            if (!validarCamposObligatorios(bloque0)) {
+                alert('Por favor, completa todos los campos obligatorios y selecciona un tipo de empresa.');
                 return;
             }
-
             bloque0.classList.add('hidden');
-            bloqueActivoId = seleccion; 
+            bloqueActivoId = tipoEmpresaSelect.value; 
             document.getElementById(bloqueActivoId).classList.remove('hidden');
+            window.scrollTo(0, 0);
         });
 
         // Avanzar al Bloque Legal
@@ -239,8 +387,25 @@
             boton.addEventListener('click', (evento) => {
                 evento.target.closest('section').classList.add('hidden');
                 bloqueFinal.classList.remove('hidden');
+                window.scrollTo(0, 0);
             });
         });
+
+        // Función central para extraer contactos de los bloques HTML
+        function extraerContactos(contenedor, arrayDestino) {
+            contenedor.querySelectorAll('.contacto-grupo').forEach(grupo => {
+                const rol = grupo.getAttribute('data-rol');
+                const nombre = grupo.querySelector('.input-nombre').value.trim();
+                const cargo = grupo.querySelector('.input-cargo').value.trim();
+                const correo = grupo.querySelector('.input-correo').value.trim();
+                const celular = grupo.querySelector('.input-celular').value.trim();
+                
+                // Solo guardamos si al menos escribieron el nombre
+                if (nombre) {
+                    arrayDestino.push({ rol, nombre, cargo, correo, celular });
+                }
+            });
+        }
 
         // Enviar Formulario
         form.addEventListener('submit', (evento) => {
@@ -248,58 +413,52 @@
             
             const btnEnviar = document.getElementById('btnEnviar');
             const textoOriginalBtn = btnEnviar.innerText;
-            btnEnviar.innerText = 'Enviando datos...';
+            btnEnviar.innerText = 'Guardando en la base de datos...';
             btnEnviar.disabled = true;
             btnEnviar.classList.replace('bg-green-600', 'bg-gray-400');
 
-            // Extraer datos dinámicamente del bloque activo
+            // 1. Recopilar todos los contactos en un solo array estructurado
+            let arrayContactos = [];
+            // Extraer obligatorios del bloque 0
+            extraerContactos(bloque0, arrayContactos);
+            // Extraer opcionales del bloque específico seleccionado
             const bloqueActivo = document.getElementById(bloqueActivoId);
-            
-            // 1. Extraer contactos específicos (iterando sobre textareas)
-            let contactosEspecificos = [];
-            bloqueActivo.querySelectorAll('textarea').forEach(ta => {
-                if (ta.value.trim() !== '') {
-                    contactosEspecificos.push(`[${ta.getAttribute('data-label')}] ${ta.value.trim()}`);
-                }
-            });
+            extraerContactos(bloqueActivo, arrayContactos);
 
-            // 2. Extraer intereses (iterando sobre checkboxes marcados)
-            let intereses = [];
+            // 2. Recopilar intereses
+            let arrayIntereses = [];
             bloqueActivo.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-                intereses.push(cb.value);
+                arrayIntereses.push(cb.value);
             });
 
-            // Construir el objeto JSON para Google Apps Script
+            // 3. Construir el objeto estructurado
             const requestData = {
-                nombreEmpresa: document.getElementById('nombreEmpresa').value,
-                nit: document.getElementById('nitEmpresa').value,
+                nombreEmpresa: document.getElementById('nombreEmpresa').value.trim(),
+                nit: document.getElementById('nitEmpresa').value.trim(),
                 tipoEmpresa: tipoEmpresaSelect.options[tipoEmpresaSelect.selectedIndex].text,
-                contactosGenerales: `Alta Dirección: ${document.getElementById('contactoDireccion').value} | RRHH: ${document.getElementById('contactoRRHH').value}`,
-                contactosEspecificos: contactosEspecificos.length > 0 ? contactosEspecificos.join(' || ') : 'Ninguno registrado',
-                interesesCapacitacion: intereses.length > 0 ? intereses.join(' | ') : 'Ninguno seleccionado',
-                autorizacionLegal: document.querySelector('input[name="habeasData"]:checked').value
+                autorizacionLegal: document.querySelector('input[name="habeasData"]:checked').value,
+                contactos: arrayContactos,
+                intereses: arrayIntereses
             };
 
-            // Ejecutar la petición POST
+            // Ejecutar POST a Google Apps Script
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify(requestData),
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8',
-                }
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' }
             })
             .then(respuesta => respuesta.json())
             .then(datos => {
                 if(datos.status === 'success') {
-                    alert('¡Gracias! La información de su empresa ha sido actualizada correctamente en Camacol Caldas.');
+                    alert('¡Excelente! La información se ha estructurado y guardado correctamente.');
                     form.reset(); 
                     location.reload(); 
                 } else {
-                    throw new Error('Error en la respuesta del servidor');
+                    throw new Error(datos.message || 'Error desconocido del servidor');
                 }
             })
             .catch(error => {
-                alert('Hubo un inconveniente al enviar la información. Por favor, intente de nuevo o verifique su conexión.');
+                alert('Hubo un inconveniente al enviar la información. Verifique su conexión o intente más tarde.');
                 console.error(error);
                 btnEnviar.innerText = textoOriginalBtn;
                 btnEnviar.disabled = false;
