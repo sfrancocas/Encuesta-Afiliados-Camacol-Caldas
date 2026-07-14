@@ -4,341 +4,577 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfilación de Afiliados | Camacol Caldas</title>
+    
+    <!-- Fuentes de Google: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: { camacol: '#0033a0' } // Azul corporativo opcional para acentos
+                }
+            }
+        }
+    </script>
+
+    <!-- SweetAlert2 (Modales) y IMask (Máscaras de inputs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/imask"></script>
+
     <style>
-        /* Ajuste para transiciones suaves al ocultar secciones */
-        .hidden { display: none !important; }
+        /* Ocultamiento y Animaciones */
+        .hidden-step { display: none !important; }
         
-        /* Ajuste del placeholder para que sea más legible en pantallas pequeñas */
-        input::placeholder {
-            color: #9ca3af;
-            font-size: 0.85rem;
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slideUpFade 0.5s ease-out forwards; }
+        
+        /* Ajuste de inputs con iconos */
+        .input-con-icono { padding-left: 2.5rem !important; }
+        input::placeholder { color: #9ca3af; font-size: 0.85rem; font-weight: 400; }
+        
+        /* Tarjetas de Checkbox personalizadas */
+        .interest-card input:checked + div {
+            border-color: #1d4ed8; /* blue-700 */
+            background-color: #eff6ff; /* blue-50 */
+        }
+        .interest-card input:checked + div .check-icon { display: block; }
+        .interest-card input:checked + div .text-content {
+            color: #1e3a8a; /* blue-900 */
+            font-weight: 600;
         }
     </style>
 </head>
-<body class="bg-blue-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+<body class="bg-blue-50 min-h-screen flex items-center justify-center p-4 text-gray-800">
 
-    <main class="bg-white rounded-xl shadow-xl max-w-3xl w-full my-8 overflow-hidden">
+    <main class="bg-white rounded-xl shadow-2xl max-w-4xl w-full my-8 overflow-hidden relative">
         
-        <header class="bg-blue-900 p-8 pt-10 text-center flex flex-col items-center">
-            <img src="https://camacolcaldas.org/assets/logo-camacol-blanco-BYq1CuoC.png" alt="Logo Camacol Caldas" class="h-24 mb-4 object-contain">
+        <!-- CABECERA AZUL OSCURO -->
+        <header class="bg-blue-900 p-8 pt-10 text-center flex flex-col items-center relative overflow-hidden">
+            <!-- Patrón de fondo sutil para dar textura (opcional) -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
             
-            <h1 class="text-3xl font-bold text-white mb-2">Actualización de Afiliados</h1>
-            <p class="text-blue-100 text-sm font-medium">Ayúdanos a enfocar nuestra gestión gremial y estrategia con la información correcta.</p>
+            <!-- AQUÍ VA TU LOGO BLANCO -->
+            <img src="https://camacolcaldas.org/assets/logo-camacol-blanco-BYq1CuoC.png" alt="Logo Camacol Caldas" class="h-24 mb-4 object-contain relative z-10">
+            
+            <h1 class="text-3xl font-bold text-white mb-2 relative z-10 tracking-tight">Actualización de Afiliados</h1>
+            <p class="text-blue-100 text-sm font-medium relative z-10">Construimos la mejor estrategia gremial con tu información actualizada.</p>
         </header>
+
+        <!-- INDICADOR DE PASOS -->
+        <div class="bg-gray-50 border-b border-gray-200 px-8 py-4 flex justify-between items-center text-sm font-medium">
+            <div id="indicador-1" class="flex items-center text-blue-700">
+                <span class="w-7 h-7 flex items-center justify-center bg-blue-700 text-white rounded-full mr-2">1</span> Datos Empresa
+            </div>
+            <div class="flex-1 h-px bg-gray-300 mx-4 hidden md:block"></div>
+            <div id="indicador-2" class="flex items-center text-gray-400">
+                <span class="w-7 h-7 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full mr-2">2</span> Perfilamiento
+            </div>
+            <div class="flex-1 h-px bg-gray-300 mx-4 hidden md:block"></div>
+            <div id="indicador-3" class="flex items-center text-gray-400">
+                <span class="w-7 h-7 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full mr-2">3</span> Autorización
+            </div>
+        </div>
 
         <form id="encuestaCamacol" class="p-8">
             
-            <section id="bloque-0" class="block transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Datos Generales de la Empresa</h2>
+            <!-- BLOQUE 0: DATOS GENERALES -->
+            <section id="bloque-0" class="block animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building mr-3"></i> Información Base</h2>
                 
                 <div class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold mb-1">Nombre o Razón Social:</label>
-                            <input type="text" id="nombreEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <div class="relative">
+                            <label class="block text-sm font-semibold mb-1 text-gray-700">Razón Social:</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-briefcase absolute left-3 top-3 text-gray-400"></i>
+                                <input type="text" id="nombreEmpresa" class="w-full border border-gray-300 rounded-lg px-3 py-2 input-con-icono focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" required>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold mb-1">NIT:</label>
-                            <input type="text" id="nitEmpresa" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <div class="relative">
+                            <label class="block text-sm font-semibold mb-1 text-gray-700">NIT:</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-id-card absolute left-3 top-3 text-gray-400"></i>
+                                <input type="text" id="nitEmpresa" placeholder="Ej: 900.123.456-7" class="w-full border border-gray-300 rounded-lg px-3 py-2 input-con-icono focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition" required>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Alta Dirección">
-                        <label class="block text-sm font-bold text-blue-900 mb-3">1. Contacto de Alta Dirección (Gerente / Presidente)</label>
+                    <!-- Contacto Alta Dirección -->
+                    <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Alta Dirección">
+                        <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-user-tie mr-2"></i> 1. Alta Dirección (Gerente / Presidente)</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <input type="text" placeholder="Nombre completo" class="input-nombre w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="email" placeholder="Correo electrónico" class="input-correo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre completo" class="input-nombre w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
+                            <div class="relative">
+                                <i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                                <input type="email" placeholder="Correo electrónico" class="input-correo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+                                <span class="email-warning hidden text-xs text-orange-500 mt-1 absolute -bottom-4 left-1"><i class="fa-solid fa-triangle-exclamation"></i> Preferiblemente correo corporativo</span>
+                            </div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                         </div>
                     </div>
 
-                    <div class="contacto-grupo bg-blue-50 p-4 rounded-lg border border-blue-100" data-rol="Gestión Humana">
-                        <label class="block text-sm font-bold text-blue-900 mb-3">2. Contacto de Gestión Humana o Capacitación</label>
+                    <!-- Contacto RRHH -->
+                    <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Gestión Humana">
+                        <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-users mr-2"></i> 2. Gestión Humana o Capacitación</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <input type="text" placeholder="Nombre completo" class="input-nombre w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="email" placeholder="Correo electrónico" class="input-correo w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
-                            <input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-400" required>
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre completo" class="input-nombre w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
+                            <div class="relative">
+                                <i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                                <input type="email" placeholder="Correo electrónico" class="input-correo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+                                <span class="email-warning hidden text-xs text-orange-500 mt-1 absolute -bottom-4 left-1"><i class="fa-solid fa-triangle-exclamation"></i> Preferiblemente correo corporativo</span>
+                            </div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                         </div>
                     </div>
 
-                    <div class="pt-4 border-t">
-                        <label class="block text-sm font-bold mb-2 text-gray-800">Tipo de Empresa (Seleccione para continuar):</label>
-                        <select id="tipoEmpresa" class="w-full border-2 border-blue-200 rounded px-3 py-3 font-semibold focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-white" required>
-                            <option value="">Seleccione su sector...</option>
-                            <option value="bloque-1">Constructor / Promotor</option>
-                            <option value="bloque-2">Industrial o Comerciante</option>
-                            <option value="bloque-3">Entidad Financiera o Fiduciaria</option>
-                            <option value="bloque-4">Empresa de Servicios Públicos</option>
-                            <option value="bloque-5">Avaluador / Firma de Avalúos</option>
-                            <option value="bloque-6">Caja de Compensación Familiar</option>
-                        </select>
+                    <div class="pt-6">
+                        <label class="block text-sm font-bold mb-2 text-gray-800"><i class="fa-solid fa-layer-group text-blue-600 mr-1"></i> Seleccione su Sector Comercial para continuar:</label>
+                        <div class="relative">
+                            <select id="tipoEmpresa" class="w-full border-2 border-blue-200 rounded-xl px-4 py-3 font-semibold text-gray-700 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 bg-white appearance-none transition" required>
+                                <option value="">Seleccione su sector...</option>
+                                <option value="bloque-1">🏗️ Constructor / Promotor</option>
+                                <option value="bloque-2">🏭 Industrial o Comerciante</option>
+                                <option value="bloque-3">🏦 Entidad Financiera o Fiduciaria</option>
+                                <option value="bloque-4">⚡ Empresa de Servicios Públicos</option>
+                                <option value="bloque-5">📐 Avaluador / Firma de Avalúos</option>
+                                <option value="bloque-6">👨‍👩‍👧‍👦 Caja de Compensación Familiar</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-4 top-4 text-gray-400 pointer-events-none"></i>
+                        </div>
                     </div>
                 </div>
 
-                <button type="button" id="btnSiguiente" class="mt-8 w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">
-                    Siguiente Paso
+                <button type="button" id="btnSiguiente" class="mt-8 w-full bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 hover:shadow-lg transition-all duration-300 flex justify-center items-center">
+                    Continuar al Perfilamiento <i class="fa-solid fa-arrow-right ml-2"></i>
                 </button>
             </section>
 
-            <section id="bloque-1" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Constructor / Promotor</h2>
+            <!-- ================= LOS BLOQUES ESPECÍFICOS ================= -->
+            
+            <!-- PLANTILLA DE CONTACTOS E INTERESES PARA BLOQUE 1 (CONSTRUCTOR) -->
+            <section id="bloque-1" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-helmet-safety mr-3"></i> Perfil: Constructor / Promotor</h2>
                 
                 <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos (Llene los que apliquen)</p>
                     
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Comercial y Ventas">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial y Ventas</label>
+                    <!-- Fila de contacto estandarizada -->
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial y Ventas">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-handshake text-blue-600 mr-1"></i> Comercial y Ventas</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
                         </div>
                     </div>
                     
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico / Proyectos">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico o Proyectos (Ing/Arq)</label>
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico / Proyectos">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-compass-drafting text-blue-600 mr-1"></i> Técnico o Proyectos (Ing/Arq)</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
                         </div>
                     </div>
 
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Jurídico / Urbanismo">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Jurídico o Urbanismo</label>
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Jurídico / Urbanismo">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-scale-balanced text-blue-600 mr-1"></i> Jurídico o Urbanismo</label>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Sostenibilidad">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Sostenibilidad / Gestión Ambiental</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Gerencia, Lean Construction y Estructuración" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia, Lean Construction y Estructuración de Proyectos</label>
-                        <label class="flex items-start"><input type="checkbox" value="Derecho Urbano, POT y Licencias" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, POT y Licencias</label>
-                        <label class="flex items-start"><input type="checkbox" value="Modelado y Gestión BIM" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Modelado y Gestión BIM / Transformación Digital</label>
-                        <label class="flex items-start"><input type="checkbox" value="Construcción Sostenible EDGE" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Construcción Sostenible y Certificación EDGE</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-2" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Industrial o Comerciante</h2>
-                
-                <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Comercial B2B">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial B2B o Ventas</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Innovación / Técnico">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Innovación, Desarrollo o Técnico</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Compras / Abastecimiento">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Compras o Abastecimiento</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Ventas Técnicas B2B y Mercadeo" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Ventas Técnicas B2B y Mercadeo Sectorial</label>
-                        <label class="flex items-start"><input type="checkbox" value="Actualización de Normas Técnicas" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Actualización de Normas Técnicas y de Materiales</label>
-                        <label class="flex items-start"><input type="checkbox" value="Sostenibilidad y Economía Circular" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Sostenibilidad y Economía Circular en Insumos</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-3" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Entidad Financiera o Fiduciaria</h2>
-                
-                <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Riesgos / Estudios Económicos">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Riesgos o Estudios Económicos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Crédito Constructor">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Crédito Constructor o Comercial</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Negocios Fiduciarios">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Negocios Fiduciarios / Legal</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Estructuración Inmobiliaria" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Estructuración y Valoración de Proyectos Inmobiliarios</label>
-                        <label class="flex items-start"><input type="checkbox" value="Análisis de Riesgo y Macroeconomía" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Análisis de Riesgo Sectorial y Macroeconomía</label>
-                        <label class="flex items-start"><input type="checkbox" value="Derecho Financiero y Fiducias" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Financiero, Fiducias y Régimen Urbano</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-4" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Empresa de Servicios Públicos</h2>
-                
-                <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Planeación e Infraestructura">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Planeación, Expansión e Infraestructura</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Atención a Constructores">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Comercial o Atención a Constructores</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico / Ingeniería">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico o Ingeniería</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Planificación Territorial y POT" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Planificación Territorial, Ciudad y POT</label>
-                        <label class="flex items-start"><input type="checkbox" value="Regulación Servicios Públicos" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Regulación y Normativa (RETIE, Hidrosanitarios)</label>
-                        <label class="flex items-start"><input type="checkbox" value="Gerencia Proyectos Infraestructura" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia de Proyectos de Infraestructura y Obra Civil</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-5" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Avaluador / Firma de Avalúos</h2>
-                
-                <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Técnico Avalúos">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Técnico de Avalúos / Perito Principal</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Estudios de Mercado">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Estudios de Mercado o Análisis de Datos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Avalúos Complejos y NIIF" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Avalúos Complejos, Especiales y NIIF</label>
-                        <label class="flex items-start"><input type="checkbox" value="Catastro y Propiedad Horizontal" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, Catastro Multipropósito y Propiedad Horizontal</label>
-                        <label class="flex items-start"><input type="checkbox" value="Analítica de Datos Inmobiliarios" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Analítica de Datos e Inteligencia de Mercados</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-6" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Área: Caja de Compensación Familiar</h2>
-                
-                <div class="space-y-4 mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-2">1. Contactos Estratégicos Adicionales (Llene los que apliquen)</p>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Vivienda y Subsidios">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Vivienda y Subsidios</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-grupo border rounded p-3 bg-gray-50" data-rol="Infraestructura / Obras">
-                        <label class="block text-xs font-bold text-gray-600 uppercase mb-2">Infraestructura / Obras y Proyectos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1 text-sm"><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1 text-sm"><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1 text-sm"><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1 text-sm">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <p class="text-sm font-bold text-gray-700 mb-3">2. Interés de Capacitación (Selección múltiple)</p>
-                    <div class="space-y-2 bg-blue-50 p-4 rounded border border-blue-100">
-                        <label class="flex items-start"><input type="checkbox" value="Estructuración VIS/VIP" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Estructuración de Proyectos de Vivienda (VIS/VIP)</label>
-                        <label class="flex items-start"><input type="checkbox" value="Gerencia Infraestructura Social" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Gerencia de Proyectos de Infraestructura Social</label>
-                        <label class="flex items-start"><input type="checkbox" value="Subsidios Concurrentes y Gestión Suelo" class="mt-1 mr-3 w-4 h-4 text-blue-600"> Derecho Urbano, Gestión del Suelo y Subsidios Concurrentes</label>
-                    </div>
-                </div>
-
-                <button type="button" class="btn-continuar-legal w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition shadow-md">Continuar a Términos Legales</button>
-            </section>
-
-            <section id="bloque-final" class="hidden transition-all duration-300">
-                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800">Autorización Legal</h2>
-                
-                <div class="mb-8 p-5 bg-blue-50 border border-blue-200 rounded-lg text-sm text-gray-700">
-                    <p class="font-bold text-base mb-2 text-blue-900">Tratamiento de Datos Personales:</p>
-                    <p>¿Autoriza a Camacol Caldas el tratamiento de los datos personales de los contactos aquí registrados, según la ley de Habeas Data, para el envío de información gremial, comercial y educativa?</p>
-                    <div class="mt-4 flex gap-8">
-                        <label class="flex items-center cursor-pointer font-semibold">
-                            <input type="radio" name="habeasData" value="Sí" class="mr-2 w-5 h-5 text-blue-600" required> Sí, autorizo.
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés (Selección Múltiple)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <!-- Tarjetas de Checkbox Interactivas -->
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Gerencia, Lean Construction y Estructuración">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Gerencia, Lean Construction y Estructuración</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
                         </label>
-                        <label class="flex items-center cursor-pointer font-semibold">
-                            <input type="radio" name="habeasData" value="No" class="mr-2 w-5 h-5 text-blue-600"> No autorizo.
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Derecho Urbano, POT y Licencias">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Derecho Urbano, POT y Licencias</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Modelado y Gestión BIM">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Modelado y Gestión BIM / Digital</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Construcción Sostenible EDGE">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Construcción Sostenible y EDGE</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
                         </label>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <button type="button" onclick="location.reload()" class="w-1/3 bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-lg hover:bg-gray-300 transition">
-                        Volver al inicio
-                    </button>
-                    <button type="submit" id="btnEnviar" class="w-2/3 bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition shadow-md">
-                        Enviar Datos a Camacol
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE 2: INDUSTRIAL -->
+            <section id="bloque-2" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-industry mr-3"></i> Perfil: Industrial o Comerciante</h2>
+                
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
+                    <!-- Estructura replicada -->
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial B2B">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-store text-blue-600 mr-1"></i> Comercial B2B o Ventas</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Innovación / Técnico">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-lightbulb text-blue-600 mr-1"></i> Innovación, Desarrollo o Técnico</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Ventas Técnicas B2B y Mercadeo">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Ventas Técnicas B2B y Mercadeo Sectorial</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Actualización de Normas Técnicas">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Actualización de Normas Técnicas y Materiales</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Sostenibilidad y Economía Circular">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Sostenibilidad y Economía Circular en Insumos</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE 3: ENTIDAD FINANCIERA -->
+            <section id="bloque-3" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building-columns mr-3"></i> Perfil: Entidad Financiera o Fiduciaria</h2>
+                
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Riesgos / Estudios Económicos">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-chart-line text-blue-600 mr-1"></i> Riesgos o Estudios Económicos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Crédito Constructor">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-money-bill-transfer text-blue-600 mr-1"></i> Crédito Constructor o Comercial</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Estructuración Inmobiliaria">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Estructuración y Valoración Inmobiliaria</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Análisis de Riesgo y Macroeconomía">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Análisis de Riesgo Sectorial y Macroeconomía</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Derecho Financiero y Fiducias">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Derecho Financiero, Fiducias y Régimen Urbano</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE 4: SERVICIOS PÚBLICOS -->
+            <section id="bloque-4" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-bolt mr-3"></i> Perfil: Servicios Públicos</h2>
+                
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Planeación e Infraestructura">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-map-location-dot text-blue-600 mr-1"></i> Planeación, Expansión e Infraestructura</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Atención a Constructores">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-headset text-blue-600 mr-1"></i> Atención a Constructores</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Planificación Territorial y POT">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Planificación Territorial, Ciudad y POT</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Regulación Servicios Públicos">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Regulación y Normativa (RETIE, Hidrosanitarios)</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Gerencia Proyectos Infraestructura">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Gerencia de Proyectos de Infraestructura y Obra</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE 5: AVALUADOR -->
+            <section id="bloque-5" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-ruler-combined mr-3"></i> Perfil: Avaluador / Firma de Avalúos</h2>
+                
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico Avalúos">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-magnifying-glass-chart text-blue-600 mr-1"></i> Técnico Avalúos / Perito Principal</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Estudios de Mercado">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-database text-blue-600 mr-1"></i> Estudios de Mercado / Datos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Avalúos Complejos y NIIF">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Avalúos Complejos, Especiales y NIIF</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Catastro y Propiedad Horizontal">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Derecho Urbano, Catastro y Propiedad Horizontal</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Analítica de Datos Inmobiliarios">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Analítica de Datos e Inteligencia de Mercados</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE 6: CAJA DE COMPENSACIÓN -->
+            <section id="bloque-6" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-house-chimney-user mr-3"></i> Perfil: Caja de Compensación Familiar</h2>
+                
+                <div class="space-y-4 mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Vivienda y Subsidios">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-hand-holding-dollar text-blue-600 mr-1"></i> Vivienda y Subsidios</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Infraestructura / Obras">
+                        <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-trowel-bricks text-blue-600 mr-1"></i> Infraestructura / Obras y Proyectos</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Estructuración VIS/VIP">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Estructuración de Proyectos de Vivienda (VIS/VIP)</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Gerencia Infraestructura Social">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Gerencia de Proyectos de Infraestructura Social</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer">
+                            <input type="checkbox" class="hidden" value="Subsidios Concurrentes y Gestión Suelo">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
+                                <span class="text-content text-gray-600 text-sm">Derecho Urbano, Suelo y Subsidios Concurrentes</span>
+                                <i class="check-icon fa-solid fa-circle-check absolute right-3 top-3 text-blue-700 hidden text-lg"></i>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                </div>
+            </section>
+
+            <!-- BLOQUE FINAL: LEGAL -->
+            <section id="bloque-final" class="hidden-step animate-slide-up">
+                <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-file-signature mr-3"></i> Autorización Legal</h2>
+                
+                <div class="mb-10 p-6 bg-blue-50/50 border border-blue-200 rounded-xl text-sm text-gray-700 shadow-sm relative overflow-hidden">
+                    <!-- Icono gigante de fondo -->
+                    <i class="fa-solid fa-shield-halved absolute -right-6 -top-6 text-9xl text-blue-100 opacity-50 pointer-events-none"></i>
+                    
+                    <p class="font-bold text-lg mb-3 text-blue-900 relative z-10">Tratamiento de Datos Personales:</p>
+                    <p class="relative z-10 leading-relaxed text-base">¿Autoriza a Camacol Caldas el tratamiento de los datos personales de los contactos aquí registrados, según la ley de Habeas Data, para el envío de información gremial, comercial y educativa?</p>
+                    <div class="mt-6 flex flex-col sm:flex-row gap-4 relative z-10">
+                        <label class="interest-card cursor-pointer flex-1">
+                            <input type="radio" name="habeasData" value="Sí" class="hidden" required>
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white text-center">
+                                <span class="text-content text-gray-600 font-medium text-base"><i class="fa-solid fa-thumbs-up mr-2"></i> Sí, autorizo</span>
+                            </div>
+                        </label>
+                        <label class="interest-card cursor-pointer flex-1">
+                            <input type="radio" name="habeasData" value="No" class="hidden">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white text-center">
+                                <span class="text-content text-gray-600 font-medium text-base"><i class="fa-solid fa-thumbs-down mr-2"></i> No autorizo</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <button type="button" class="btn-volver-final w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="submit" id="btnEnviar" class="w-2/3 bg-green-600 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-green-700 hover:shadow-lg transition-all duration-300 flex justify-center items-center text-lg">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Datos
                     </button>
                 </div>
             </section>
@@ -358,11 +594,52 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
         const tipoEmpresaSelect = document.getElementById('tipoEmpresa');
         let bloqueActivoId = '';
 
-        // Función para validar campos obligatorios dentro de un contenedor
+        // --- MÁSCARAS DE INPUTS (IMask) ---
+        // Máscara para NIT (Números, puntos y guiones permitidos)
+        IMask(document.getElementById('nitEmpresa'), { mask: /^[0-9\-\.]+$/ });
+        // Máscara para todos los celulares (Formato: 300 000 0000)
+        document.querySelectorAll('.input-celular').forEach(input => {
+            IMask(input, { mask: '000 000 0000' });
+        });
+
+        // --- ADVERTENCIA CORREO GENÉRICO ---
+        document.addEventListener('input', e => {
+            if(e.target.type === 'email') {
+                const isGeneric = /@(gmail\.com|hotmail\.com|yahoo\.com|outlook\.com)$/i.test(e.target.value.trim());
+                const warningMsg = e.target.parentElement.querySelector('.email-warning');
+                if(warningMsg) {
+                    if(isGeneric) warningMsg.classList.remove('hidden');
+                    else warningMsg.classList.add('hidden');
+                }
+            }
+            saveDraft(); // Autoguardado al teclear
+        });
+        document.addEventListener('change', saveDraft);
+
+        // --- CONTROL DE INDICADOR DE PASOS ---
+        function updateSteps(step) {
+            const step1 = document.getElementById('indicador-1');
+            const step2 = document.getElementById('indicador-2');
+            const step3 = document.getElementById('indicador-3');
+
+            // Reset a inactivo
+            [step1, step2, step3].forEach(el => {
+                el.className = 'flex items-center text-gray-400 transition-colors duration-300';
+                el.children[0].className = 'w-7 h-7 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full mr-2 transition-colors duration-300';
+            });
+
+            // Activar actual
+            const activeEl = step === 1 ? step1 : step === 2 ? step2 : step3;
+            activeEl.className = 'flex items-center text-blue-700 transition-colors duration-300';
+            activeEl.children[0].className = 'w-7 h-7 flex items-center justify-center bg-blue-700 text-white rounded-full mr-2 shadow-md transition-colors duration-300';
+        }
+
+        // --- NAVEGACIÓN ---
         function validarCamposObligatorios(contenedor) {
             const requeridos = contenedor.querySelectorAll('[required]');
             for (let req of requeridos) {
-                if (!req.value.trim()) {
+                if (!req.value.trim() && (req.type !== 'radio' && req.type !== 'checkbox')) {
+                    Swal.fire({ icon: 'warning', title: 'Atención', text: 'Por favor, completa todos los campos obligatorios antes de continuar.', confirmButtonColor: '#1d4ed8' });
                     req.focus();
                     return false;
                 }
@@ -370,28 +647,78 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             return true;
         }
 
-        // Avanzar del Bloque 0 al Específico
+        // Bloque 0 -> Bloque Específico
         document.getElementById('btnSiguiente').addEventListener('click', () => {
-            if (!validarCamposObligatorios(bloque0)) {
-                alert('Por favor, completa todos los campos obligatorios y selecciona un tipo de empresa.');
-                return;
-            }
-            bloque0.classList.add('hidden');
+            if (!validarCamposObligatorios(bloque0)) return;
+            
+            bloque0.classList.add('hidden-step');
             bloqueActivoId = tipoEmpresaSelect.value; 
-            document.getElementById(bloqueActivoId).classList.remove('hidden');
-            window.scrollTo(0, 0);
+            document.getElementById(bloqueActivoId).classList.remove('hidden-step');
+            updateSteps(2);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Avanzar al Bloque Legal
+        // Bloque Específico -> Bloque Legal
         document.querySelectorAll('.btn-continuar-legal').forEach(boton => {
             boton.addEventListener('click', (evento) => {
-                evento.target.closest('section').classList.add('hidden');
-                bloqueFinal.classList.remove('hidden');
-                window.scrollTo(0, 0);
+                evento.target.closest('section').classList.add('hidden-step');
+                bloqueFinal.classList.remove('hidden-step');
+                updateSteps(3);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
-        // Función central para extraer contactos de los bloques HTML
+        // Botones Volver
+        document.querySelectorAll('.btn-volver').forEach(boton => {
+            boton.addEventListener('click', (evento) => {
+                evento.target.closest('section').classList.add('hidden-step');
+                bloque0.classList.remove('hidden-step');
+                updateSteps(1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelector('.btn-volver-final').addEventListener('click', () => {
+            bloqueFinal.classList.add('hidden-step');
+            document.getElementById(bloqueActivoId).classList.remove('hidden-step');
+            updateSteps(2);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- AUTOGUARDADO (LOCAL STORAGE) ---
+        function saveDraft() {
+            const data = {};
+            // Guardar inputs y textareas
+            form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
+                if(el.id) data[el.id] = el.value;
+                // Si no tiene id (como los dinámicos), usamos un identificador basado en su posición
+                else data['el_' + Array.from(form.elements).indexOf(el)] = el.value;
+            });
+            // Guardar checkboxes
+            form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => data['cb_' + i] = el.checked);
+            localStorage.setItem('camacol_draft', JSON.stringify(data));
+        }
+
+        function loadDraft() {
+            const draft = localStorage.getItem('camacol_draft');
+            if(draft) {
+                const data = JSON.parse(draft);
+                form.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), select').forEach(el => {
+                    const key = el.id || 'el_' + Array.from(form.elements).indexOf(el);
+                    if(data[key]) {
+                        el.value = data[key];
+                        // Re-aplicar máscara si es celular
+                        if(el.classList.contains('input-celular') && el.maskRef) el.maskRef.updateValue();
+                    }
+                });
+                form.querySelectorAll('input[type="checkbox"]').forEach((el, i) => {
+                    if(data['cb_' + i]) el.checked = true;
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", loadDraft);
+
+        // --- ENVÍO DE DATOS ---
         function extraerContactos(contenedor, arrayDestino) {
             contenedor.querySelectorAll('.contacto-grupo').forEach(grupo => {
                 const rol = grupo.getAttribute('data-rol');
@@ -399,39 +726,36 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
                 const cargo = grupo.querySelector('.input-cargo').value.trim();
                 const correo = grupo.querySelector('.input-correo').value.trim();
                 const celular = grupo.querySelector('.input-celular').value.trim();
-                
-                // Solo guardamos si al menos escribieron el nombre
-                if (nombre) {
-                    arrayDestino.push({ rol, nombre, cargo, correo, celular });
-                }
+                if (nombre) arrayDestino.push({ rol, nombre, cargo, correo, celular });
             });
         }
 
-        // Enviar Formulario
         form.addEventListener('submit', (evento) => {
             evento.preventDefault(); 
             
-            const btnEnviar = document.getElementById('btnEnviar');
-            const textoOriginalBtn = btnEnviar.innerText;
-            btnEnviar.innerText = 'Guardando en la base de datos...';
-            btnEnviar.disabled = true;
-            btnEnviar.classList.replace('bg-green-600', 'bg-gray-400');
+            // Validar radio de Habeas Data
+            if(!document.querySelector('input[name="habeasData"]:checked')) {
+                Swal.fire({ icon: 'warning', title: 'Autorización Requerida', text: 'Por favor, indique si autoriza el tratamiento de datos.', confirmButtonColor: '#1d4ed8' });
+                return;
+            }
 
-            // 1. Recopilar todos los contactos en un solo array estructurado
+            Swal.fire({
+                title: 'Enviando información...',
+                text: 'Por favor no cierre esta ventana.',
+                allowOutsideClick: false,
+                didOpen: () => { Swal.showLoading() }
+            });
+
             let arrayContactos = [];
-            // Extraer obligatorios del bloque 0
             extraerContactos(bloque0, arrayContactos);
-            // Extraer opcionales del bloque específico seleccionado
             const bloqueActivo = document.getElementById(bloqueActivoId);
             extraerContactos(bloqueActivo, arrayContactos);
 
-            // 2. Recopilar intereses
             let arrayIntereses = [];
             bloqueActivo.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
                 arrayIntereses.push(cb.value);
             });
 
-            // 3. Construir el objeto estructurado
             const requestData = {
                 nombreEmpresa: document.getElementById('nombreEmpresa').value.trim(),
                 nit: document.getElementById('nitEmpresa').value.trim(),
@@ -441,7 +765,6 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
                 intereses: arrayIntereses
             };
 
-            // Ejecutar POST a Google Apps Script
             fetch(SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify(requestData),
@@ -450,19 +773,25 @@ AKfycbwVWQGMNhR8QsD6iQ6WQbzwiTCoIrAekJVrpr3Xl0MtbkuqXCdEVrMZVzJG5DQ-bpJfyw';
             .then(respuesta => respuesta.json())
             .then(datos => {
                 if(datos.status === 'success') {
-                    alert('¡Excelente! La información se ha estructurado y guardado correctamente.');
-                    form.reset(); 
-                    location.reload(); 
+                    localStorage.removeItem('camacol_draft'); // Limpiar borrador
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Actualización Exitosa!',
+                        text: 'Gracias por ayudarnos a construir gremio. Su información ha sido guardada de forma segura.',
+                        confirmButtonColor: '#16a34a'
+                    }).then(() => location.reload());
                 } else {
-                    throw new Error(datos.message || 'Error desconocido del servidor');
+                    throw new Error(datos.message);
                 }
             })
             .catch(error => {
-                alert('Hubo un inconveniente al enviar la información. Verifique su conexión o intente más tarde.');
                 console.error(error);
-                btnEnviar.innerText = textoOriginalBtn;
-                btnEnviar.disabled = false;
-                btnEnviar.classList.replace('bg-gray-400', 'bg-green-600');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hubo un inconveniente',
+                    text: 'No pudimos guardar los datos. Verifique su conexión e intente nuevamente.',
+                    confirmButtonColor: '#d33'
+                });
             });
         });
     </script>
