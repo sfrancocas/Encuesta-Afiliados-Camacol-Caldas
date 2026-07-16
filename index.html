@@ -56,6 +56,10 @@
         .legal-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
         .legal-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .legal-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Carrusel de Logos Oculto */
+        .carrusel-logos::-webkit-scrollbar { display: none; }
+        .carrusel-logos { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-blue-50 min-h-screen flex items-center justify-center p-4 text-gray-800">
@@ -67,12 +71,12 @@
             
             <img src="https://i.postimg.cc/7YkFtCmQ/logo-camacol-blanco-Mesa-de-trabajo-1.png" alt="Logo Camacol Caldas" class="h-20 sm:h-24 md:h-28 w-auto object-contain relative z-10 drop-shadow-md mb-8">
             
-            <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 mb-8 relative z-10 w-full max-w-2xl mx-auto px-2">
-                <img src="https://i.postimg.cc/Zqrx3r16/Camacol-Gestiona.png" alt="Camacol Gestiona" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/Pr2cvkmC/Camacol-Informa.png" alt="Camacol Informa" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/mg9YfY2h/Camacol-Conecta.png" alt="Camacol Conecta" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/qvJywdSQ/Capacita-Blanco.png" alt="Camacol Capacita" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/VLM7SMb1/image.png" alt="Camacol Innova" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+            <div class="carrusel-logos flex overflow-x-auto snap-x snap-mandatory w-full max-w-5xl mx-auto px-4 sm:px-6 gap-6 items-center justify-start lg:justify-center mb-8 relative z-10 py-2">
+                <img src="https://i.postimg.cc/Zqrx3r16/Camacol-Gestiona.png" alt="Camacol Gestiona" class="snap-center shrink-0 h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/Pr2cvkmC/Camacol-Informa.png" alt="Camacol Informa" class="snap-center shrink-0 h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/mg9YfY2h/Camacol-Conecta.png" alt="Camacol Conecta" class="snap-center shrink-0 h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/qvJywdSQ/Capacita-Blanco.png" alt="Camacol Capacita" class="snap-center shrink-0 h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/VLM7SMb1/image.png" alt="Camacol Innova" class="snap-center shrink-0 h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
             </div>
             
             <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 relative z-10 tracking-tight leading-tight">Actualización Información <br class="hidden sm:block"> de Afiliados</h1>
