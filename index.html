@@ -62,25 +62,21 @@
 
     <main class="bg-white rounded-xl shadow-2xl max-w-4xl w-full my-8 overflow-hidden relative">
         
-<!-- CABECERA MODIFICADA CON LOGOS DE TAMAÑO CONTROLADO -->
-        <header class="bg-blue-900 p-8 pt-10 text-center flex flex-col items-center relative overflow-hidden">
+        <header class="bg-blue-900 p-6 sm:p-8 pt-10 text-center flex flex-col items-center relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
             
-            <!-- 1. LOGO PRINCIPAL (CAMACOL CALDAS) -->
-            <img src="https://i.postimg.cc/7YkFtCmQ/logo-camacol-blanco-Mesa-de-trabajo-1.png" alt="Logo Camacol Caldas" class="h-20 md:h-28 w-auto object-contain relative z-10 drop-shadow-md mb-6">
+            <img src="https://i.postimg.cc/7YkFtCmQ/logo-camacol-blanco-Mesa-de-trabajo-1.png" alt="Logo Camacol Caldas" class="h-20 sm:h-24 md:h-28 w-auto object-contain relative z-10 drop-shadow-md mb-8">
             
-            <!-- 2. LOGOS DE UNIDADES ESTRATÉGICAS -->
-            <!-- Notarás que agregué class="h-10 md:h-12..." a cada imagen para hacerlas pequeñas -->
-            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8 relative z-10">
-                <img src="https://i.postimg.cc/Zqrx3r16/Camacol-Gestiona.png" alt="Construimos a la Par" class="h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/Pr2cvkmC/Camacol-Informa.png" alt="Camacol Verde" class="h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/mg9YfY2h/Camacol-Conecta.png" alt="BIM Forum" class="h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/qvJywdSQ/Capacita-Blanco.png" alt="CIEV" class="h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
-                <img src="https://i.postimg.cc/VLM7SMb1/image.png" alt="Mujeres en Construcción" class="h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+            <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6 mb-8 relative z-10 w-full max-w-2xl mx-auto px-2">
+                <img src="https://i.postimg.cc/Zqrx3r16/Camacol-Gestiona.png" alt="Camacol Gestiona" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/Pr2cvkmC/Camacol-Informa.png" alt="Camacol Informa" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/mg9YfY2h/Camacol-Conecta.png" alt="Camacol Conecta" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/qvJywdSQ/Capacita-Blanco.png" alt="Camacol Capacita" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <img src="https://i.postimg.cc/VLM7SMb1/image.png" alt="Camacol Innova" class="h-8 sm:h-10 md:h-12 w-auto object-contain hover:scale-105 transition-transform">
             </div>
             
-            <h1 class="text-3xl font-bold text-white mb-2 relative z-10 tracking-tight">Actualización Información de Afiliados</h1>
-            <p class="text-blue-100 text-sm font-medium relative z-10">Construimos la mejor estrategia gremial con tu información actualizada.</p>
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 relative z-10 tracking-tight leading-tight">Actualización Información <br class="hidden sm:block"> de Afiliados</h1>
+            <p class="text-blue-100 text-sm sm:text-base font-medium relative z-10 px-4">Construimos la mejor estrategia gremial con tu información actualizada.</p>
         </header>
 
         <div class="bg-gray-50 border-b border-gray-200 px-8 py-4 flex justify-between items-center text-sm font-medium">
@@ -103,7 +99,7 @@
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-building mr-3"></i> Información Base</h2>
                 
                 <div class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="relative">
                             <label class="block text-sm font-semibold mb-1 text-gray-700">Razón Social:</label>
                             <div class="relative">
@@ -122,7 +118,7 @@
 
                     <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Alta Dirección">
                         <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-user-tie mr-2"></i> 1. Alta Dirección (Gerente / Presidente)</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre completo" class="input-nombre w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                             <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                             <div class="relative">
@@ -136,7 +132,7 @@
 
                     <div class="contacto-grupo bg-blue-50/50 p-5 rounded-xl border border-blue-100 hover:shadow-md transition duration-300" data-rol="Gestión Humana">
                         <label class="block text-sm font-bold text-blue-900 mb-3"><i class="fa-solid fa-users mr-2"></i> 2. Gestión Humana o Capacitación</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre completo" class="input-nombre w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                             <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded-lg py-2 input-con-icono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required></div>
                             <div class="relative">
@@ -170,42 +166,41 @@
                 </button>
             </section>
 
-            <!-- Bloques 1 al 6 (Se mantienen intactos) -->
             <section id="bloque-1" class="hidden-step animate-slide-up">
                 <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-blue-800 flex items-center"><i class="fa-solid fa-helmet-safety mr-3"></i> Perfil: Constructor / Promotor</h2>
                 <div class="space-y-4 mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos (Llene los que apliquen)</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial y Ventas">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-handshake text-blue-600 mr-1"></i> Comercial y Ventas</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico / Proyectos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-compass-drafting text-blue-600 mr-1"></i> Técnico o Proyectos (Ing/Arq)</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Jurídico / Urbanismo">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-scale-balanced text-blue-600 mr-1"></i> Jurídico o Urbanismo</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 text-sm pl-7"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés (Selección Múltiple)</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Gerencia, Lean Construction y Estructuración">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -236,9 +231,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -248,26 +243,26 @@
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Comercial B2B">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-store text-blue-600 mr-1"></i> Comercial B2B o Ventas</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Innovación / Técnico">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-lightbulb text-blue-600 mr-1"></i> Innovación, Desarrollo o Técnico</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Ventas Técnicas B2B y Mercadeo">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -291,9 +286,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -303,26 +298,26 @@
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Riesgos / Estudios Económicos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-chart-line text-blue-600 mr-1"></i> Riesgos o Estudios Económicos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Crédito Constructor">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-money-bill-transfer text-blue-600 mr-1"></i> Crédito Constructor o Comercial</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Estructuración Inmobiliaria">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -346,9 +341,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -358,26 +353,26 @@
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Planeación e Infraestructura">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-map-location-dot text-blue-600 mr-1"></i> Planeación, Expansión e Infraestructura</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Atención a Constructores">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-headset text-blue-600 mr-1"></i> Atención a Constructores</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Planificación Territorial y POT">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -401,9 +396,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -413,26 +408,26 @@
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Técnico Avalúos">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-magnifying-glass-chart text-blue-600 mr-1"></i> Técnico Avalúos / Perito Principal</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Estudios de Mercado">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-database text-blue-600 mr-1"></i> Estudios de Mercado / Datos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Avalúos Complejos y NIIF">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -456,9 +451,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -468,26 +463,26 @@
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">1. Contactos Estratégicos</p>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Vivienda y Subsidios">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-hand-holding-dollar text-blue-600 mr-1"></i> Vivienda y Subsidios</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                     <div class="contacto-grupo border border-gray-200 rounded-lg p-3 bg-gray-50 hover:border-blue-300 transition" data-rol="Infraestructura / Obras">
                         <label class="block text-xs font-bold text-gray-700 mb-2"><i class="fa-solid fa-trowel-bricks text-blue-600 mr-1"></i> Infraestructura / Obras y Proyectos</label>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                            <div class="relative"><i class="fa-regular fa-user absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-2 top-2 text-gray-400 text-xs"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-regular fa-envelope absolute left-2 top-2 text-gray-400 text-xs"></i><input type="email" placeholder="Correo" class="input-correo w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
-                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-2 top-2 text-gray-400 text-xs"></i><input type="tel" placeholder="Celular" class="input-celular w-full border rounded px-2 py-1.5 pl-7 text-sm"></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="relative"><i class="fa-regular fa-user absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Nombre" class="input-nombre w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-sitemap absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="text" placeholder="Cargo" class="input-cargo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-regular fa-envelope absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="email" placeholder="Correo" class="input-correo w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
+                            <div class="relative"><i class="fa-solid fa-mobile-screen absolute left-3 top-2.5 text-gray-400 text-sm"></i><input type="tel" placeholder="Celular" class="input-celular w-full border border-gray-300 rounded px-3 py-2 text-sm pl-9"></div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-8">
                     <p class="text-sm font-bold text-gray-500 mb-4 uppercase tracking-wider">2. Áreas de Interés</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <label class="interest-card cursor-pointer">
                             <input type="checkbox" class="hidden" value="Estructuración VIS/VIP">
                             <div class="border-2 border-gray-200 rounded-xl p-4 hover:border-blue-400 transition relative bg-white h-full flex items-center">
@@ -511,9 +506,9 @@
                         </label>
                     </div>
                 </div>
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="button" class="btn-continuar-legal w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="button" class="btn-continuar-legal w-full sm:w-2/3 bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-blue-800 transition shadow-md flex justify-center items-center">Siguiente <i class="fa-solid fa-arrow-right ml-2"></i></button>
                 </div>
             </section>
 
@@ -554,9 +549,9 @@
                     </div>
                 </div>
 
-                <div class="flex gap-4">
-                    <button type="button" class="btn-volver-final w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
-                    <button type="submit" id="btnEnviar" class="w-2/3 bg-green-600 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-green-700 hover:shadow-lg transition-all duration-300 flex justify-center items-center text-lg">
+                <div class="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6">
+                    <button type="button" class="btn-volver-final w-full sm:w-1/3 border border-gray-300 text-gray-700 font-bold py-3.5 px-4 rounded-xl hover:bg-gray-50 transition">Volver</button>
+                    <button type="submit" id="btnEnviar" class="w-full sm:w-2/3 bg-green-600 text-white font-bold py-3.5 px-4 rounded-xl hover:bg-green-700 hover:shadow-lg transition-all duration-300 flex justify-center items-center text-lg">
                         <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Datos
                     </button>
                 </div>
